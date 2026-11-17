@@ -23,7 +23,7 @@ jobs:
         run: msbuild WinUiAuto.sln /t:Build /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /m
       - name: Pack
         run: dotnet pack WinUiAuto.Windows\UiAutomation.Windows.csproj -c Release -o artifacts\packages
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: NuGet-packages
           path: artifacts\packages\*.*nupkg
