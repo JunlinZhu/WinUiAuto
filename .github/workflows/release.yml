@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: microsoft/setup-msbuild@v2
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 8.0.x
       - run: msbuild UiAutoLib\UiAutoLib.vcxproj /t:Build /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v143 /m
