@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <RootNamespace>WinUiAutomation.Studio</RootNamespace>
+    <AssemblyName>WinUiAutomation.Studio</AssemblyName>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <StartupObject>WinUiAutomation.Studio.Program</StartupObject>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\UiAutoLib\UiAutoLib.vcxproj" />
+    <ProjectReference Include="..\WinUiAuto.Windows\UiAutomation.Windows.csproj" />
+    <ProjectReference Include="..\WinUiAutomation.Runtime\WinUiAutomation.Runtime.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Platform)' == 'x64' Or '$(Platform)' == 'AnyCPU'">
+    <None Include="..\x64\$(Configuration)\UiAutoLib.dll"
+          Link="UiAutoLib.dll"
+          CopyToOutputDirectory="PreserveNewest"
+          Visible="false" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)' == 'x86'">
+    <None Include="..\$(Configuration)\UiAutoLib.dll"
+          Link="UiAutoLib.dll"
+          CopyToOutputDirectory="PreserveNewest"
+          Visible="false" />
+  </ItemGroup>
+
+  <!-- .cs and .xaml files are picked up automatically by the SDK's default globs;
+       these entries just restore the codegen metadata VS needs for the designer files -->
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>..\x64\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>..\x64\Release\</OutputPath>
+   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <OutputPath>..\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <OutputPath>..\Release\</OutputPath>
+  </PropertyGroup>
+
+</Project>

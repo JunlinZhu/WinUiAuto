@@ -1,0 +1,23 @@
+name: publish-nuget
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    environment: nuget.org
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: msbuild UiAutoLib\UiAutoLib.vcxproj /t:Build /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v143 /m
+      - run: msbuild UiAutoLib\UiAutoLib.vcxproj /t:Build /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /m
+      - run: dotnet pack WinUiAuto.Windows\UiAutomation.Windows.csproj -c Release -o artifacts\packages
+      - name: Publish to NuGet.org
+        run: dotnet nuget push "artifacts\packages\UiAutomation.Windows.[0-9]*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

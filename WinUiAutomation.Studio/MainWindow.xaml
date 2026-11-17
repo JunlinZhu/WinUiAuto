@@ -1,0 +1,201 @@
+﻿<Window x:Class="WinUiAutomation.Studio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WinUiAutomation.Studio"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        Title="WinUiAutomation Studio" Height="500" Width="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="43" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid  Name="gridNodePath">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height= "{Binding TabCodeHeight}" />
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBox Name="rtbNodePath" HorizontalScrollBarVisibility="Auto" 
+                                 VerticalScrollBarVisibility="Auto" 
+                                 TextWrapping="Wrap"
+                                 MouseDoubleClick="rtbNodePath_MouseDoubleClick">
+                        <TextBox.ContextMenu>
+                            <ContextMenu Name="MenuNodePathTextBox">
+                                <MenuItem Header="Verify" Click="MenuVerify"/>
+                                <MenuItem Header="Verify in 5 seconds" Click="MenuVerify5Sec"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                </Grid>
+                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="Azure"/>
+                <Grid Grid.Row="2">
+                    <TabControl Name="tabControl">
+                        <TabItem>
+                            <TabItem.Header>
+                                <Label Content="Recorded UI" HorizontalAlignment="Stretch"/>
+                            </TabItem.Header>
+                            <TreeView Name="treeUiPath" HorizontalContentAlignment="Center" 
+                                       VerticalContentAlignment="Center" 
+                                       SelectedItemChanged="treeUiPath_SelectedItemChanged">
+
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type TreeViewItem}">
+                                        <Setter Property="TreeViewItem.IsExpanded" Value="True"/>
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate DataType="{x:Type local:UiTreeNode}" ItemsSource="{Binding Items}">
+                                        <TextBlock Text="{Binding Title}" ToolTipService.ToolTip="{Binding Title,Mode=TwoWay}" />
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+
+                                <TreeView.Resources>
+                                    <ContextMenu x:Key ="UiNode"  StaysOpen="true">
+                                        <MenuItem Header="Highlight"  Click="Highlight_Click"/>
+                                    </ContextMenu>
+                                    <ContextMenu x:Key="LeafNode"  StaysOpen="true">
+                                        <MenuItem Header="Highlight"  Click="Highlight_Click"/>
+                                        <MenuItem Header="Remove" Click="MenuRemoveNode_Click"/>
+                                    </ContextMenu>
+                                </TreeView.Resources>
+
+                            </TreeView>
+                        </TabItem>
+                        <TabItem Name="tabItemCode">
+                            <TabItem.Header>
+                                <Label Content="Skill JSON" HorizontalAlignment="Stretch"/>
+                            </TabItem.Header>
+                            <TextBox Name="textBoxCode" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MouseEnter="textBoxCode_MouseEnter">
+                                <TextBox.ToolTip>
+                                    <ToolTip>
+                                        <TextBlock Name="textBoxCode_ToolTip" Text="Versioned skill JSON for recorded UI" />
+                                    </ToolTip>
+                                </TextBox.ToolTip>
+                            </TextBox>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <ComboBox Name="comboBoxRecordedUi" SelectionChanged="comboBoxRecordedUi_SelectionChanged" Margin="0,0,0,0"
+                                  Background="Ivory" MouseEnter="comboBoxRecordedUi_MouseEnter"
+                                  DisplayMemberPath="Description">
+                            <ComboBox.ToolTip>
+                                <ToolTip>
+                                    <TextBlock Name="comboBoxRecordedUi_ToolTip" Text= "Node path for recorded UI" />
+                                </ToolTip>
+                            </ComboBox.ToolTip>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Name="btnWinAppDriverCode" Click="btnWinAppDriverCode_Click">
+                            <Button.ToolTip>
+                                <ToolTip>
+                                    <TextBlock Name="toolTipText" Text="Copy versioned skill JSON to Clipboard" />
+                                </ToolTip>
+                            </Button.ToolTip>
+                            <Button.Content>
+                                <Image Source="Resource/copy.png"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Button Name="btnDelete"  Content="-" FontSize="22" Click="btnDelete_Click">
+                            <Button.ToolTip>
+                                <ToolTip>
+                                    <TextBlock Name="toolTipDelete" Text= "Delete selected UI task" />
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55" />
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="176" />
+                <ColumnDefinition Width="85" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <RadioButton Content="Up" Name="btnWalkUp" GroupName="WalkDirection" IsChecked="True" Click="rbtnUpDown_Click" Margin="1,1,4,1"
+                        ToolTip="UI tree walk direction"/>
+                    <RadioButton Content="Down" Name="btnWalkDown" GroupName="WalkDirection" Click="rbtnUpDown_Click" Margin="1,1,1,1"
+                        ToolTip="UI tree walk direction"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <ToggleButton Content="Record" Name="btnRecord" Click="btnRecord_Click" IsThreeState="False" Margin="1" Height="30" VerticalAlignment="Center"
+                        ToolTip="Record UI interaction (Please wait for flashing rect before each mouse click)">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Border CornerRadius="3" Background="{TemplateBinding Background}">
+                                <ContentPresenter Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter  Property="Background" Value="DarkGray" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Button Content="Clear" Name="btnClear" Click="btnClear_Click" Margin="7,1,1,1" Height="30" VerticalAlignment="Center"
+                        ToolTip="Clear all recorded UI tasks"/>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <GroupBox Header="Selector fields to omit" Margin="1">
+                    <StackPanel Orientation="Vertical" Margin="1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="Name" Name="checkboxRemoveName" Click="checkboxRemoveName_Click" Margin="1"
+                                      IsChecked="{Binding s_removeName, Mode=TwoWay}"
+                                      ToolTip="Remove names from recorded UI tasks"/>
+                            <CheckBox Content="Class" Name="checkboxRemoveClassName" Click="checkboxRemoveClassName_Click" Margin="1"
+                                      IsChecked="{Binding s_removeClassName, Mode=TwoWay}"
+                                      ToolTip="Remove class names from recorded UI tasks"/>
+                            <CheckBox Content="AutoID" Name="checkboxRemoveAutoId" Click="checkboxRemoveAutoId_Click" Margin="1"
+                                      IsChecked="{Binding s_removeAutoId, Mode=TwoWay}"
+                                      ToolTip="Remove automation IDs from recorded UI tasks"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <Button Content="Play" Name="btnVerify" Click="btnVerify_Click" Margin="1" Height="30" VerticalAlignment="Center"
+                        ToolTip="Play recorded UI Tasks"/>
+            </Grid>
+
+            <Grid Grid.Column="5">
+                <Button Content="Skill JSON" Name="btnGenerateCode" Click="btnGenerateCode_Click" Margin="7,1,1,1" Height="30" VerticalAlignment="Center"
+                        ToolTip="Copy versioned skill JSON"/>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

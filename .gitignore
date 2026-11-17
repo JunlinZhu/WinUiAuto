@@ -1,0 +1,56 @@
+## Visual Studio, .NET, and C++ build output
+.vs/
+**/bin/
+**/obj/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/x64/
+**/x86/
+**/*.tlog/
+**/*.pdb
+**/*.ilk
+**/*.iobj
+**/*.ipdb
+**/*.recipe
+**/*.pch
+**/*.tlh
+**/*.tli
+**/*.lastbuildstate
+**/*.csproj.user
+**/*.vcxproj.user
+*.suo
+
+## Restore and packaging output
+packages/
+artifacts/
+*.nupkg
+*.snupkg
+*.vsix
+
+## Local signing material and certificates
+*.pfx
+*.p12
+*.snk
+*.pem
+*.key
+
+## Generated native and installer binaries
+**/*.dll
+**/*.exe
+**/*.lib
+**/*.exp
+**/*.tlb
+
+## Local/editor and OS files
+.idea/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+Thumbs.db
+Desktop.ini
+
+## Repository-specific generated folders
+Debug/
+Release/
+WinUIA_VSIX/UIPlayerBin/

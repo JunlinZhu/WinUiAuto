@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore managed solution
+        run: msbuild WinUiAuto.sln /t:Restore /p:Configuration=Release /p:Platform=x64 /m
+      - name: Build native x86
+        run: msbuild UiAutoLib\UiAutoLib.vcxproj /t:Build /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v143 /m
+      - name: Build native x64
+        run: msbuild UiAutoLib\UiAutoLib.vcxproj /t:Build /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /m
+      - name: Build managed projects
+        run: msbuild WinUiAuto.sln /t:Build /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /m
+      - name: Pack
+        run: dotnet pack WinUiAuto.Windows\UiAutomation.Windows.csproj -c Release -o artifacts\packages
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NuGet-packages
+          path: artifacts\packages\*.*nupkg

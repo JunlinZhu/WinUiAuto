@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WinUiAutomation.Studio": {
+      "commandName": "Project",
+      "debugEngines": "managed,native"
+    }
+  }
+}
