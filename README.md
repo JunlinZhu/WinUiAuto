@@ -1,4 +1,4 @@
-# UiXPath
+# WinUiAuto
 
 Windows UI Automation libraries and tools for capturing, locating, inspecting, and replaying UI elements through reusable node paths.
 
