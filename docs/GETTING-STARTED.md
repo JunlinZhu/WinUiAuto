@@ -24,3 +24,13 @@ if (!result.Succeeded)
 ```
 
 An interactive, unlocked Windows desktop is required for native UI Automation and input.
+
+## Run generated C# from Studio
+
+`WinUiAutomation.Studio` **Generate Code** copies a C# method to the clipboard. Paste that method into the `Program` class in [`templates/WinUiAutomation.GeneratedApp`](../templates/WinUiAutomation.GeneratedApp), update `Main` to call its timestamped method name, and run:
+
+```powershell
+dotnet run --project .\templates\WinUiAutomation.GeneratedApp\WinUiAutomation.GeneratedApp.csproj -c Release
+```
+
+Build `UiAutoLib` for x64 first so the template can copy `UiAutoLib.dll` beside the executable. Review generated code before running because it sends real mouse and keyboard input.

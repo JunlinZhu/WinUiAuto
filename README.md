@@ -10,6 +10,7 @@ Windows UI Automation libraries and tools for capturing, locating, inspecting, a
 - `WinUiAutomation.McpServer` - JSON-RPC/stdio tools for snapshots, locating, actions, screenshots, and skill execution.
 - `WinUiAutomation.Runtime.Tests` - deterministic runtime tests using `IAutomationDriver` fakes.
 - `WinUiAutomation.Studio` - WPF recorder and editor.
+- `templates\WinUiAutomation.GeneratedApp` - console template for running C# copied from Studio's Generate Code command.
 
 ## Requirements
 
