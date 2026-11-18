@@ -67,15 +67,21 @@ public sealed class AutomationPlayback
 
             if (task.Action == AutomationTaskAction.KeyboardInput)
             {
-                automation.SendKeyboardInput(task.KeyboardInput ?? string.Empty, task.CapsLock, task.NumLock, task.ScrollLock);
-                results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Succeeded, lastBounds, false, 0));
+                if (!options.DryRun)
+                {
+                    automation.SendKeyboardInput(task.KeyboardInput ?? string.Empty, task.CapsLock, task.NumLock, task.ScrollLock);
+                }
+                results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Succeeded, lastBounds, false, 0) { InputSent = !options.DryRun });
                 continue;
             }
 
             if (task.Action == AutomationTaskAction.MouseWheel && string.IsNullOrWhiteSpace(task.NodePath))
             {
-                automation.PerformMouseAction(UiAction.MouseWheel, lastBounds, task.OffsetX, task.OffsetY, task.DeltaX, task.DeltaY);
-                results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Succeeded, lastBounds, false, 0));
+                if (!options.DryRun)
+                {
+                    automation.PerformMouseAction(UiAction.MouseWheel, lastBounds, task.OffsetX, task.OffsetY, task.DeltaX, task.DeltaY);
+                }
+                results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Succeeded, lastBounds, false, 0) { InputSent = !options.DryRun });
                 continue;
             }
 
@@ -106,8 +112,11 @@ public sealed class AutomationPlayback
                 continue;
             }
 
-            automation.PerformMouseAction(task.ToUiAction(), lastBounds, task.OffsetX, task.OffsetY, task.DeltaX, task.DeltaY);
-            results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Succeeded, lastBounds, located.UsedParentFallback, located.Attempts));
+            if (!options.DryRun)
+            {
+                automation.PerformMouseAction(task.ToUiAction(), lastBounds, task.OffsetX, task.OffsetY, task.DeltaX, task.DeltaY);
+            }
+            results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Succeeded, lastBounds, located.UsedParentFallback, located.Attempts) { InputSent = !options.DryRun });
             if (!Wait(options.PostActionDelay, cancellationToken))
             {
                 return new PlaybackResult(results.AsReadOnly(), true);

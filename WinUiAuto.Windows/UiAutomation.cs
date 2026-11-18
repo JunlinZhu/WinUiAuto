@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
@@ -10,6 +12,12 @@ public enum PathDirection
 {
     RootToLeaf,
     LeafToRoot
+}
+
+public sealed record AutomationScope
+{
+    public IReadOnlySet<int>? AllowedProcessIds { get; init; }
+    public IReadOnlySet<nint>? AllowedWindowHandles { get; init; }
 }
 
 public enum UiAction
@@ -95,8 +103,9 @@ public sealed class WinUiAutomation : IDisposable
     private static int referenceCount;
     private bool disposed;
 
-    public WinUiAutomation()
+    public WinUiAutomation(AutomationScope? scope = null)
     {
+        Scope = scope;
         NativeGate.Wait();
         try
         {
@@ -112,6 +121,10 @@ public sealed class WinUiAutomation : IDisposable
             NativeGate.Release();
         }
     }
+
+    public AutomationScope? Scope { get; }
+
+    public void ValidateRootWindow(nint rootWindow) => ValidateScope(rootWindow);
 
     public UiCaptureResult CapturePath(int screenX, int screenY, PathDirection direction = PathDirection.LeafToRoot, int bufferSize = DefaultBufferSize)
     {
@@ -145,12 +158,51 @@ public sealed class WinUiAutomation : IDisposable
             UiRectangle rectangle = UiRectangle.FromNative(bounds);
             string rawState = state.ToString();
             IReadOnlyList<UiElementState> records = UiElementStateParser.Parse(rawState);
-            return new UiLocateResult(result >= 0 && !rectangle.IsEmpty, result == EAbort, rectangle, rawState, records, result);
+            var locateResult = new UiLocateResult(result >= 0 && !rectangle.IsEmpty, result == EAbort, rectangle, rawState, records, result);
+            ValidateLocatedScope(locateResult);
+            return locateResult;
         });
+    }
+
+    private void ValidateLocatedScope(UiLocateResult result)
+    {
+        if (Scope is null || result.TargetState is null)
+        {
+            return;
+        }
+
+        UiElementState target = result.TargetState;
+        if (Scope.AllowedProcessIds is not null
+            && int.TryParse(target.GetValue("processId"), out int processId)
+            && !Scope.AllowedProcessIds.Contains(processId))
+        {
+            throw new UnauthorizedAccessException($"Process {processId} is not in the automation allow-list.");
+        }
+
+        if (Scope.AllowedWindowHandles is not null
+            && TryParseHandle(target.GetValue("nativeWindowHandle") ?? target.GetValue("windowHandle"), out nint windowHandle)
+            && !Scope.AllowedWindowHandles.Contains(windowHandle))
+        {
+            throw new UnauthorizedAccessException($"Window 0x{windowHandle.ToInt64():X} is not in the automation allow-list.");
+        }
+    }
+
+    private static bool TryParseHandle(string? value, out nint handle)
+    {
+        handle = 0;
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return false;
+        }
+
+        return value.StartsWith("0x", StringComparison.OrdinalIgnoreCase)
+            ? long.TryParse(value[2..], System.Globalization.NumberStyles.HexNumber, null, out long parsed) && (handle = (nint)parsed) != 0
+            : long.TryParse(value, out long decimalValue) && (handle = (nint)decimalValue) != 0;
     }
 
     public UiSnapshot GetSnapshot(nint rootWindow = 0, UiSnapshotOptions? options = null)
     {
+        ValidateScope(rootWindow);
         options ??= new UiSnapshotOptions();
         NativeUiSnapshotOptions nativeOptions = ToNative(options);
         return Invoke(() => ReadSnapshot(
@@ -162,6 +214,7 @@ public sealed class WinUiAutomation : IDisposable
     public UiSnapshot QuerySnapshot(UiSnapshotQuery query, nint rootWindow = 0, UiSnapshotOptions? options = null)
     {
         ArgumentNullException.ThrowIfNull(query);
+        ValidateScope(rootWindow);
         options ??= new UiSnapshotOptions();
         NativeUiSnapshotOptions nativeOptions = ToNative(options);
         NativeUiSnapshotQuery nativeQuery = ToNative(query);
@@ -169,6 +222,41 @@ public sealed class WinUiAutomation : IDisposable
             (StringBuilder? output, int capacity, out int requiredCapacity) =>
                 NativeMethods.QueryUiSnapshot(rootWindow, ref nativeOptions, ref nativeQuery, output, capacity, out requiredCapacity),
             nameof(QuerySnapshot)));
+    }
+
+    public byte[] GetScreenshot(nint rootWindow = 0)
+    {
+        ValidateScope(rootWindow);
+        nint window = rootWindow == 0 ? NativeMethods.GetForegroundWindow() : rootWindow;
+        if (window == 0 || !NativeMethods.GetWindowRect(window, out NativeRectangle rectangle))
+        {
+            throw new UiAutomationException(nameof(GetScreenshot), Marshal.GetLastWin32Error());
+        }
+
+        int width = rectangle.Right - rectangle.Left;
+        int height = rectangle.Bottom - rectangle.Top;
+        if (width <= 0 || height <= 0)
+        {
+            throw new UiAutomationException(nameof(GetScreenshot), EFail);
+        }
+
+        using var bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+        using (Graphics graphics = Graphics.FromImage(bitmap))
+        {
+            if (!NativeMethods.PrintWindow(window, graphics.GetHdc(), 2))
+            {
+                graphics.ReleaseHdc();
+                graphics.CopyFromScreen(rectangle.Left, rectangle.Top, 0, 0, new Size(width, height));
+            }
+            else
+            {
+                graphics.ReleaseHdc();
+            }
+        }
+
+        using var output = new MemoryStream();
+        bitmap.Save(output, ImageFormat.Png);
+        return output.ToArray();
     }
 
     public void AbortLocate()
@@ -275,6 +363,28 @@ public sealed class WinUiAutomation : IDisposable
 
     private void ThrowIfDisposed() => ObjectDisposedException.ThrowIf(disposed, this);
 
+    private void ValidateScope(nint rootWindow)
+    {
+        if (Scope is null || rootWindow == 0)
+        {
+            return;
+        }
+
+        if (Scope.AllowedWindowHandles is not null && !Scope.AllowedWindowHandles.Contains(rootWindow))
+        {
+            throw new UnauthorizedAccessException($"Window 0x{rootWindow.ToInt64():X} is not in the automation allow-list.");
+        }
+
+        if (Scope.AllowedProcessIds is not null)
+        {
+            _ = NativeMethods.GetWindowThreadProcessId(rootWindow, out uint processId);
+            if (!Scope.AllowedProcessIds.Contains(checked((int)processId)))
+            {
+                throw new UnauthorizedAccessException($"Process {processId} is not in the automation allow-list.");
+            }
+        }
+    }
+
     private static void ThrowIfFailed(int result, string operation)
     {
         if (result < 0)
@@ -377,7 +487,7 @@ internal delegate uint SnapshotNativeCall(StringBuilder? output, int capacity, o
 internal static partial class UiElementStateParser
 {
     private static readonly Regex HeaderPattern = new(@"^(?<role>Root|Ancestor|Target)\s+depth=(?<depth>\d+)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-    private static readonly Regex PropertyPattern = new(@"(?:^|,)(?<key>controlType|automationId|className|name|localizedControlType|helpText|itemStatus|accessKey|acceleratorKey|ariaRole|ariaProperties|value|legacyValue|enabled|state|expandCollapseState|rect)(?:=|:)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+    private static readonly Regex PropertyPattern = new(@"(?:^|,)(?<key>controlType|automationId|className|name|localizedControlType|helpText|itemStatus|accessKey|acceleratorKey|ariaRole|ariaProperties|value|legacyValue|enabled|state|expandCollapseState|processId|nativeWindowHandle|windowHandle|rect)(?:=|:)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
     public static IReadOnlyList<UiElementState> Parse(string rawState)
     {
@@ -492,4 +602,18 @@ internal static class NativeMethods
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Unicode)]
     internal static extern uint QueryUiSnapshot(nint rootWindow, ref NativeUiSnapshotOptions options, ref NativeUiSnapshotQuery query, StringBuilder? output, int outputCapacity, out int requiredCapacity);
+
+    [DllImport("user32.dll")]
+    internal static extern nint GetForegroundWindow();
+
+    [DllImport("user32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool GetWindowRect(nint hWnd, out NativeRectangle rect);
+
+    [DllImport("user32.dll")]
+    internal static extern uint GetWindowThreadProcessId(nint hWnd, out uint processId);
+
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool PrintWindow(nint hWnd, nint hdcBlt, uint flags);
 }

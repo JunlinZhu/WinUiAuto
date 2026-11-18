@@ -10,6 +10,10 @@ public interface IAutomationDriver
     void Flash(UiRectangle bounds, int red, int green, int blue, int durationMilliseconds, int inflate);
     void PerformMouseAction(UiAction action, UiRectangle bounds, int offsetX, int offsetY, int deltaX, int deltaY);
     void SendKeyboardInput(string text, bool capsLock, bool numLock, bool scrollLock);
+    UiSnapshot GetSnapshot(nint rootWindow = 0, UiSnapshotOptions? options = null) => throw new NotSupportedException();
+    UiSnapshot QuerySnapshot(UiSnapshotQuery query, nint rootWindow = 0, UiSnapshotOptions? options = null) => throw new NotSupportedException();
+    byte[] GetScreenshot(nint rootWindow = 0) => throw new NotSupportedException();
+    void ValidateRootWindow(nint rootWindow) { }
 }
 
 internal sealed class WindowsAutomationDriver : IAutomationDriver
@@ -29,4 +33,8 @@ internal sealed class WindowsAutomationDriver : IAutomationDriver
         automation.PerformMouseAction(action, bounds, offsetX, offsetY, deltaX, deltaY);
     public void SendKeyboardInput(string text, bool capsLock, bool numLock, bool scrollLock) =>
         automation.SendKeyboardInput(text, capsLock, numLock, scrollLock);
+    public UiSnapshot GetSnapshot(nint rootWindow = 0, UiSnapshotOptions? options = null) => automation.GetSnapshot(rootWindow, options);
+    public UiSnapshot QuerySnapshot(UiSnapshotQuery query, nint rootWindow = 0, UiSnapshotOptions? options = null) => automation.QuerySnapshot(query, rootWindow, options);
+    public byte[] GetScreenshot(nint rootWindow = 0) => automation.GetScreenshot(rootWindow);
+    public void ValidateRootWindow(nint rootWindow) => automation.ValidateRootWindow(rootWindow);
 }

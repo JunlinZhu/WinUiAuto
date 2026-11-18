@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>x64;x86</Platforms>
+    <AssemblyName>WinUiAutomation.McpServer</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WinUiAuto.Windows\UiAutomation.Windows.csproj" />
+    <ProjectReference Include="..\WinUiAutomation.Runtime\WinUiAutomation.Runtime.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)' == 'x64' Or '$(Platform)' == 'AnyCPU'">
+    <None Include="..\UiAutoLib\x64\$(Configuration)\UiAutoLib.dll" Link="UiAutoLib.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Condition="Exists('..\UiAutoLib\x64\$(Configuration)\UiAutoLib.dll')" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)' == 'x86'">
+    <None Include="..\UiAutoLib\$(Configuration)\UiAutoLib.dll" Link="UiAutoLib.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Condition="Exists('..\UiAutoLib\$(Configuration)\UiAutoLib.dll')" />
+  </ItemGroup>
+</Project>

@@ -38,7 +38,10 @@ public sealed record AutomationSkill
 public enum AutomationCompletionAssertionKind
 {
     ElementExists,
-    ElementNotExists
+    ElementNotExists,
+    ValueEquals,
+    TextEquals,
+    ScreenshotChanged
 }
 
 public sealed record AutomationCompletionAssertion
@@ -46,6 +49,8 @@ public sealed record AutomationCompletionAssertion
     public string? Name { get; init; }
     public required AutomationCompletionAssertionKind Kind { get; init; }
     public required JsonElement Target { get; init; }
+    public string? ExpectedValue { get; init; }
+    public string? ExpectedScreenshotBase64 { get; init; }
     public int TimeoutMilliseconds { get; init; } = 5000;
     public int PollIntervalMilliseconds { get; init; } = 250;
 
@@ -65,6 +70,29 @@ public sealed record AutomationCompletionAssertion
         if (Target.ValueKind != JsonValueKind.Array)
         {
             throw new JsonException("A completion assertion target must be a JSON array.");
+        }
+
+        if (Kind is AutomationCompletionAssertionKind.ValueEquals or AutomationCompletionAssertionKind.TextEquals
+            && ExpectedValue is null)
+        {
+            throw new JsonException($"Completion assertion kind '{Kind}' requires expectedValue.");
+        }
+
+        if (Kind == AutomationCompletionAssertionKind.ScreenshotChanged)
+        {
+            if (string.IsNullOrWhiteSpace(ExpectedScreenshotBase64))
+            {
+                throw new JsonException("A screenshotChanged assertion requires expectedScreenshotBase64.");
+            }
+
+            try
+            {
+                _ = Convert.FromBase64String(ExpectedScreenshotBase64);
+            }
+            catch (FormatException exception)
+            {
+                throw new JsonException("expectedScreenshotBase64 must contain valid Base64 data.", exception);
+            }
         }
 
         ArgumentOutOfRangeException.ThrowIfNegative(TimeoutMilliseconds);

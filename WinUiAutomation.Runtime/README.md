@@ -76,3 +76,11 @@ Readers reject unknown formats, versions, and properties rather than silently ch
 ```
 
 Assertions run after playback and are combined with AND semantics. `elementExists` succeeds when the target resolves; `elementNotExists` succeeds when it does not. Each result reports success, timeout, or cancellation plus attempts, elapsed time, and the last locate result.
+
+`valueEquals` and `textEquals` compare `expectedValue` with the located target's value or name/value. `screenshotChanged` compares a captured PNG with `expectedScreenshotBase64` and is intended for custom-rendered surfaces.
+
+## Hosting constraints and safety
+
+Create one `WinUiAutomation` instance per process/session and dispose it when the host exits. Native operations are serialized and should be called from an STA thread (a dedicated STA worker is recommended for a long-lived MCP host). The desktop must remain interactive and unlocked.
+
+`PlaybackOptions.DryRun` resolves and records targets without sending mouse or keyboard input. Configure `AutomationScope` with allowed process IDs or window handles when using snapshots or screenshots, and provide an `IAutomationAuditSink` to `AutomationSkillRunner` to record every executed task. Skill parsing and native UI failures returned through `RunJson`/`Run` are represented by `SkillRunResult.Error` so a host can serialize a clean response.

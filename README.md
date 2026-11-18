@@ -7,6 +7,8 @@ Windows UI Automation libraries and tools for capturing, locating, inspecting, a
 - `UiAutoLib` - native Windows UI Automation and input library for x86 and x64.
 - `WinUiAuto.Windows` - packable .NET 8 Windows API with native runtime assets.
 - `WinUiAutomation.Runtime` - bounded playback and versioned automation skills.
+- `WinUiAutomation.McpServer` - JSON-RPC/stdio tools for snapshots, locating, actions, screenshots, and skill execution.
+- `WinUiAutomation.Runtime.Tests` - deterministic runtime tests using `IAutomationDriver` fakes.
 - `WinUiAutomation.Studio` - WPF recorder and editor.
 
 ## Requirements
