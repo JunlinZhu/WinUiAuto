@@ -12,7 +12,7 @@ jobs:
     environment: nuget.org
     steps:
       - uses: actions/checkout@v7
-      - uses: microsoft/setup-msbuild@v2
+      - uses: microsoft/setup-msbuild@v3
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
