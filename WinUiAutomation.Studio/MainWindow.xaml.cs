@@ -816,9 +816,9 @@ namespace WinUiAutomation.Studio
 
                     if (uiTask == RecordedUiTask.s_listRecordedUi.First())
                     {
-                        sb.AppendLine($"static void WinUiAutomation_{DateTime.Now.ToString("yyyyMMddHHmm")}()");
+                        sb.AppendLine("internal static void RunGeneratedAutomation(IGeneratedAutomation automation, Action<int>? sleep = null)");
                         sb.AppendLine("{");
-                        sb.AppendLine("\tusing var automation = new UiAutomation.Windows.WinUiAutomation();");
+                        sb.AppendLine("\tsleep ??= Thread.Sleep;");
                         sb.AppendLine();
                     }
 

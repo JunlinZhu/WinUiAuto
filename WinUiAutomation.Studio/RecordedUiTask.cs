@@ -652,7 +652,7 @@ namespace WinUiAutomation.Studio
 
             if (this.RecordedGapMs > 0 && nOrder > 0)
             {
-                sb.AppendLine("System.Threading.Thread.Sleep(" + this.RecordedGapMs + ");");
+                sb.AppendLine("sleep(" + this.RecordedGapMs + ");");
             }
 
             string consoleWriteLine = "Console.WriteLine(\"" + this.Description.Replace("\"", "\\\"") + "\");";

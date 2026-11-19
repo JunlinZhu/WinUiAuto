@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="WinUiAutomation.GeneratedApp.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\WinUiAuto.Windows\UiAutomation.Windows.csproj" />
   </ItemGroup>
 
