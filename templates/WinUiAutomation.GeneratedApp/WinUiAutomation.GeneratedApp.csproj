@@ -14,13 +14,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\WinUiAuto.Windows\UiAutomation.Windows.csproj" />
+    <ProjectReference Include="..\..\UiAutoLib\UiAutoLib.vcxproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
-
-  <Target Name="BuildUiAutoLib" BeforeTargets="Build">
-    <MSBuild Projects="..\..\UiAutoLib\UiAutoLib.vcxproj"
-             Targets="Build"
-             Properties="Configuration=$(Configuration);Platform=x64" />
-  </Target>
 
   <Target Name="CopyUiAutoLibDll" AfterTargets="Build">
     <ItemGroup>
