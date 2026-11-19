@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: microsoft/setup-msbuild@v3
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
@@ -21,11 +21,28 @@ jobs:
         run: msbuild UiAutoLib\UiAutoLib.vcxproj /t:Build /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /m
       - name: Build managed projects
         run: msbuild WinUiAuto.sln /t:Build /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /m
+      - name: Run native tests (UiAutoLib.Tests)
+        shell: pwsh
+        run: |
+          $vstest = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" `
+            -latest -requires Microsoft.VisualStudio.Workload.ManagedDesktop `
+            -find "**\vstest.console.exe" | Select-Object -First 1
+          if (-not $vstest) {
+            throw "vstest.console.exe not found on this runner image."
+          }
+          & $vstest .\x64\Release\UiAutoLib.Tests.dll
+          if ($LASTEXITCODE -ne 0) {
+            throw "Native tests failed with exit code $LASTEXITCODE."
+          }
       - name: Run runtime tests
-        run: dotnet test WinUiAutomation.Runtime.Tests\WinUiAutomation.Runtime.Tests.csproj -c Release --no-restore --logger "console;verbosity=normal"
+        run: dotnet vstest WinUiAutomation.Runtime.Tests\bin\x64\Release\net8.0-windows\WinUiAutomation.Runtime.Tests.dll --logger:"console;verbosity=normal"
+      - name: Run Studio tests
+        run: dotnet vstest WinUiAutomation.Studio.Tests\bin\x64\Release\net8.0-windows\WinUiAutomation.Studio.Tests.dll --logger:"console;verbosity=normal"
+      - name: Run GeneratedApp tests
+        run: dotnet vstest WinUiAutomation.GeneratedApp.Tests\bin\x64\Release\net8.0-windows\WinUiAutomation.GeneratedApp.Tests.dll --logger:"console;verbosity=normal"
       - name: Pack
         run: dotnet pack WinUiAuto.Windows\UiAutomation.Windows.csproj -c Release -o artifacts\packages
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@v4
         with:
           name: NuGet-packages
           path: artifacts\packages\*.*nupkg
