@@ -437,7 +437,7 @@ namespace WinUiAutomation.Studio
             return null;
         }
 
-        private string BuildNodePath(UiTreeNode node)
+        internal static string BuildNodePath(UiTreeNode node)
         {
             if (node == null)
             {
@@ -774,7 +774,7 @@ namespace WinUiAutomation.Studio
             GenerateCSCode(sender, e);
         }
 
-        private static string IndentCodeBlock(string code, string indent)
+        internal static string IndentCodeBlock(string code, string indent)
         {
             if (string.IsNullOrEmpty(code)) return code;
 
