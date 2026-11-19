@@ -3,7 +3,11 @@
 
 class FindUiByPath : public UiTreeWalkCommon {
 public:
+    FindUiByPath() noexcept = default;
     HRESULT FindElement(const std::wstring& nodePath, BOOL bFlash, RECT& outRect, std::wstring& elementState);
+
+protected:
+    explicit FindUiByPath(bool initializeAutomation) noexcept;
 
 private:
     struct NodeSegment {

@@ -23,10 +23,12 @@ public:
     static void ShutdownHighlightOverlay();
 
 protected:
+    explicit UiTreeWalkCommon(bool initializeAutomation) noexcept;
     HRESULT InitializeUIA();
     void HideHighlightOverlay();
 
     ComPtr<IUIAutomation6> m_pUIA6;
     ComPtr<IUIAutomationTreeWalker> m_pRawWalker;
     HDC m_hdcScreen;
+    bool m_comInitialized;
 };

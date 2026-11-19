@@ -80,6 +80,10 @@ namespace {
 
 } // namespace
 
+BuildPathToUi::BuildPathToUi(bool initializeAutomation) noexcept
+    : UiTreeWalkCommon(initializeAutomation) {
+}
+
 // 1-based index of pCurrent among the siblings of the same control type, or 0
 // if it was not found (or the sibling scan limit was hit first).
 int BuildPathToUi::GetElementPosition(IUIAutomationElement* pCurrent,
