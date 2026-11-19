@@ -240,15 +240,22 @@ namespace {
     }
 }
 
-UiTreeWalkCommon::UiTreeWalkCommon() noexcept {
+UiTreeWalkCommon::UiTreeWalkCommon() noexcept
+    : UiTreeWalkCommon(true) {
+}
+
+UiTreeWalkCommon::UiTreeWalkCommon(bool initializeAutomation) noexcept
+    : m_hdcScreen(nullptr), m_comInitialized(false) {
+    if (!initializeAutomation) return;
+
     m_hdcScreen = ::GetDC(nullptr);
-    ::CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
+    m_comInitialized = SUCCEEDED(::CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED));
     InitializeUIA();
 }
 
 UiTreeWalkCommon::~UiTreeWalkCommon() {
-    ::ReleaseDC(nullptr, m_hdcScreen);
-    ::CoUninitialize();
+    if (m_hdcScreen) ::ReleaseDC(nullptr, m_hdcScreen);
+    if (m_comInitialized) ::CoUninitialize();
 }
 
 void UiTreeWalkCommon::HideHighlightOverlay() {

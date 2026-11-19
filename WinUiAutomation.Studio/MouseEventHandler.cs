@@ -19,6 +19,8 @@ namespace WinUiAutomation.Studio
         // mosue events
         static int wheelAmount = 0;
         static MouseState s_mouseState = MouseState.Idle;
+        internal static MouseState CurrentState => s_mouseState;
+        internal static int PendingWheelAmount => wheelAmount;
         static int leftDown, topDown, leftMove, topMove;
         static DateTime lastRecordedDateTime = DateTime.MinValue;
 

@@ -116,7 +116,7 @@ namespace WinUiAutomation.Studio
             checkboxRemoveName.IsEnabled = enabled;
             checkboxRemoveClassName.IsEnabled = enabled;
             checkboxRemoveAutoId.IsEnabled = enabled;
-            btnWinAppDriverCode.IsEnabled = enabled;
+            btnSkillJson.IsEnabled = enabled;
             btnDelete.IsEnabled = enabled;
             btnGenerateCode.IsEnabled = enabled;
             treeUiPath.IsEnabled = enabled;
@@ -230,7 +230,7 @@ namespace WinUiAutomation.Studio
             textBoxCode.Text = "";
         }
 
-        private void btnWinAppDriverCode_Click(object sender, RoutedEventArgs e)
+        private void GenerateSkillJson(object sender, RoutedEventArgs e)
         {
             lock (RecordedUiTask.s_lockRecordedUi)
             {
@@ -252,8 +252,8 @@ namespace WinUiAutomation.Studio
 
             this.Dispatcher.Invoke(new Action(() =>
             {
-                this.toolTipText.Text = "Versioned skill JSON copied to clipboard";
-                ((ToolTip)btnWinAppDriverCode.ToolTip).IsOpen = true;
+                SetButtonToolTipText(btnSkillJson, "Versioned skill JSON copied to clipboard");
+                ((ToolTip)btnSkillJson.ToolTip).IsOpen = true;
 
                 timer = new System.Timers.Timer(2000) { Enabled = true, AutoReset = false };
                 timer.Elapsed += ResetToolTip;
@@ -272,9 +272,17 @@ namespace WinUiAutomation.Studio
 
             this.Dispatcher.Invoke(new Action(() =>
             {
-                ((ToolTip)btnWinAppDriverCode.ToolTip).IsOpen = false;
-                toolTipText.Text = "Copy versioned skill JSON to Clipboard";
+                ((ToolTip)btnSkillJson.ToolTip).IsOpen = false;
+                SetButtonToolTipText(btnSkillJson, "Copy versioned skill JSON to Clipboard");
             }), System.Windows.Threading.DispatcherPriority.ContextIdle);
+        }
+
+        private static void SetButtonToolTipText(System.Windows.Controls.Button button, string text)
+        {
+            if (button?.ToolTip is ToolTip toolTip && toolTip.Content is TextBlock textBlock)
+            {
+                textBlock.Text = text;
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -429,7 +437,7 @@ namespace WinUiAutomation.Studio
             return null;
         }
 
-        private string BuildNodePath(UiTreeNode node)
+        internal static string BuildNodePath(UiTreeNode node)
         {
             if (node == null)
             {
@@ -756,9 +764,87 @@ namespace WinUiAutomation.Studio
             }), System.Windows.Threading.DispatcherPriority.ContextIdle);
         }
 
-        private void btnGenerateCode_Click(object sender, RoutedEventArgs e)
+        private void btnSkillJson_Click(object sender, RoutedEventArgs e)
         {
-            btnWinAppDriverCode_Click(sender, e);
+            GenerateSkillJson(sender, e);
+        }
+
+        private void btnGenerateCsCode_Click(object sender, RoutedEventArgs e)
+        {
+            GenerateCSCode(sender, e);
+        }
+
+        internal static string IndentCodeBlock(string code, string indent)
+        {
+            if (string.IsNullOrEmpty(code)) return code;
+
+            var lines = code.Replace("\r\n", "\n").Split('\n');
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Length > 0)
+                {
+                    lines[i] = indent + lines[i];
+                }
+            }
+            return string.Join(Environment.NewLine, lines);
+        }
+
+        private void GenerateCSCode(object sender, RoutedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            lock (RecordedUiTask.s_lockRecordedUi)
+            {
+                if (RecordedUiTask.s_listRecordedUi.Count == 0)
+                {
+                    return;
+                }
+
+                if (btnRecord.IsChecked == true)
+                {
+                    btnRecord_Click(null, null);
+                }
+
+                int nOrder = 0;
+                int nOrderFocused = 0;
+                foreach (var uiTask in RecordedUiTask.s_listRecordedUi)
+                {
+                    if (uiTask.UiTaskName == EnumUiTaskName.LeftClick)
+                    {
+                        nOrderFocused = nOrder;
+                    }
+
+                    if (uiTask == RecordedUiTask.s_listRecordedUi.First())
+                    {
+                        sb.AppendLine("internal static void RunGeneratedAutomation(IGeneratedAutomation automation, Action<int>? sleep = null)");
+                        sb.AppendLine("{");
+                        sb.AppendLine("\tsleep ??= Thread.Sleep;");
+                        sb.AppendLine();
+                    }
+
+                    sb.AppendLine(IndentCodeBlock(uiTask.CreateCSCode(nOrder++, nOrderFocused), "\t"));
+
+                    if (uiTask == RecordedUiTask.s_listRecordedUi.Last())
+                    {
+                        sb.AppendLine("}");
+                    }
+                }
+            }
+
+            if (sb.Length > 0)
+            {
+                Clipboard.SetText(sb.ToString());
+
+                this.Dispatcher.Invoke(new Action(() =>
+                {
+                    SetButtonToolTipText(btnGenerateCode, "Generated WinUiAutomation code copied to clipboard");
+                    ((ToolTip)btnGenerateCode.ToolTip).IsOpen = true;
+
+                    timer = new System.Timers.Timer(2000) { Enabled = true, AutoReset = false };
+                    timer.Elapsed += ResetToolTip;
+                    timer.Start();
+                }), System.Windows.Threading.DispatcherPriority.ContextIdle);
+            }
         }
 
         private void rtbNodePath_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)

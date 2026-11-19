@@ -68,6 +68,7 @@ public sealed record PlaybackOptions
     public TimeSpan MaximumTaskDelay { get; init; } = TimeSpan.FromSeconds(30);
     public bool FlashDuringStabilityChecks { get; init; } = true;
     public bool UseSameBoundsParentFallback { get; init; } = true;
+    public bool DryRun { get; init; }
 }
 
 public enum PlaybackTaskStatus
@@ -84,7 +85,10 @@ public sealed record PlaybackTaskResult(
     PlaybackTaskStatus Status,
     UiRectangle Bounds,
     bool UsedParentFallback,
-    int LocateAttempts);
+    int LocateAttempts)
+{
+    public bool InputSent { get; init; }
+}
 
 public sealed record PlaybackResult(IReadOnlyList<PlaybackTaskResult> Tasks, bool WasCanceled)
 {

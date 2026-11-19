@@ -145,6 +145,10 @@ namespace {
     }
 }
 
+FindUiByPath::FindUiByPath(bool initializeAutomation) noexcept
+    : UiTreeWalkCommon(initializeAutomation) {
+}
+
 std::vector<FindUiByPath::NodeSegment> FindUiByPath::ParseJson(const std::wstring& json) {
     std::vector<NodeSegment> segments;
     size_t pos = 0;
@@ -601,6 +605,7 @@ HRESULT FindUiByPath::FindElement(const std::wstring& nodePath, BOOL bFlash, REC
     HRESULT hr = S_OK;
     std::vector<NodeSegment> segments = ParseJson(nodePath);
     if (segments.empty()) return E_INVALIDARG;
+    if (!m_pUIA6 || !m_pRawWalker) return E_POINTER;
 
     ComPtr<IUIAutomationElement> pRoot;
     hr = m_pUIA6->GetRootElement(&pRoot);

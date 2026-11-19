@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>UiAutomation.Windows</PackageId>
     <Version>0.1.0</Version>
@@ -14,9 +15,9 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/WinUiAuto/WinUiAuto</RepositoryUrl>
+    <RepositoryUrl>https://github.com/JunlinZhu/WinUiAuto</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/WinUiAuto/WinUiAuto</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/JunlinZhu/WinUiAuto</PackageProjectUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -26,6 +27,7 @@
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="LICENSE" />
     <None Include="..\UiAutoLib\x64\Release\UiAutoLib.dll"
           Pack="true"
           PackagePath="runtimes\win-x64\native\UiAutoLib.dll"

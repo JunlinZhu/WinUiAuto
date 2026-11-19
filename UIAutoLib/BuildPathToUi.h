@@ -5,9 +5,13 @@
 
 class BuildPathToUi : public UiTreeWalkCommon {
 public:
+    BuildPathToUi() noexcept = default;
     HRESULT PathFromLeafToRoot(long left, long top, std::wstring& nodePath, RECT& outRect);
     HRESULT PathFromRootToLeaf(long left, long top, std::wstring& nodePath, RECT& outRect);
     HRESULT InvokeElementAction(int x, int y);
+
+protected:
+    explicit BuildPathToUi(bool initializeAutomation) noexcept;
 
 private:
     int GetElementPosition(IUIAutomationElement* pCurrent, IUIAutomationElement* pParent, CONTROLTYPEID controlTypeId);

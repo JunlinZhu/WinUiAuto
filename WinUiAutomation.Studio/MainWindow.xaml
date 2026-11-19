@@ -87,7 +87,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
@@ -101,8 +100,8 @@
                             </ComboBox.ToolTip>
                         </ComboBox>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <Button Name="btnWinAppDriverCode" Click="btnWinAppDriverCode_Click">
+                    <!--<Grid Grid.Column="1">
+                        <Button Name="btnSkillJson1" Click="btnSkillJson_Click">
                             <Button.ToolTip>
                                 <ToolTip>
                                     <TextBlock Name="toolTipText" Text="Copy versioned skill JSON to Clipboard" />
@@ -112,8 +111,8 @@
                                 <Image Source="Resource/copy.png"/>
                             </Button.Content>
                         </Button>
-                    </Grid>
-                    <Grid Grid.Column="2">
+                    </Grid>-->
+                    <Grid Grid.Column="1">
                         <Button Name="btnDelete"  Content="-" FontSize="22" Click="btnDelete_Click">
                             <Button.ToolTip>
                                 <ToolTip>
@@ -133,6 +132,7 @@
                 <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="176" />
                 <ColumnDefinition Width="85" />
+                <ColumnDefinition Width="40" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
@@ -192,10 +192,26 @@
             </Grid>
 
             <Grid Grid.Column="5">
-                <Button Content="Skill JSON" Name="btnGenerateCode" Click="btnGenerateCode_Click" Margin="7,1,1,1" Height="30" VerticalAlignment="Center"
-                        ToolTip="Copy versioned skill JSON"/>
+                <Button Content="C#" Name="btnGenerateCode" Click="btnGenerateCsCode_Click" Margin="7,1,1,1" Height="30" VerticalAlignment="Center"
+                        >
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock Text="Generate C# automation code" />
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
             </Grid>
 
+            <Grid Grid.Column="6">
+                <Button Content="Skill" Name="btnSkillJson" Click="btnSkillJson_Click" Margin="7,1,1,1" Height="30" VerticalAlignment="Center"
+                        >
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock Text="Generate versioned skill JSON" />
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

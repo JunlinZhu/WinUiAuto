@@ -644,6 +644,54 @@ namespace WinUiAutomation.Studio
             return s.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&").Replace("''", "'");
         }
 
+        public string CreateCSCode(int nOrder, int nOrderFocused)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("// " + this.Description);
+
+            if (this.RecordedGapMs > 0 && nOrder > 0)
+            {
+                sb.AppendLine("sleep(" + this.RecordedGapMs + ");");
+            }
+
+            string consoleWriteLine = "Console.WriteLine(\"" + this.Description.Replace("\"", "\\\"") + "\");";
+            sb.AppendLine(consoleWriteLine);
+
+            if (this.UiTaskName == EnumUiTaskName.KeyboardInput)
+            {
+                string bCapsLock = this.CapsLock ? "true" : "false";
+                string bNumLock = this.NumLock ? "true" : "false";
+                string bScrollLock = this.ScrollLock ? "true" : "false";
+                sb.AppendLine($"    automation.SendKeyboardInput(\"{this.Base64Text}\", {bCapsLock}, {bNumLock}, {bScrollLock});");
+                return sb.ToString();
+            }
+
+            string jsonVariable = "json" + nOrder;
+            string locateVariable = "located" + nOrder;
+            string actionName = this.UiTaskName == EnumUiTaskName.LeftDblClick ? "LeftDoubleClick" : this.UiTaskName.ToString();
+
+            sb.AppendLine($"string {jsonVariable} = \"\"\"");
+            foreach (var line in this.GetJson().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                sb.AppendLine(line.Trim());
+            }
+            sb.AppendLine("\"\"\";");
+            sb.AppendLine($"UiLocateResult {locateVariable} = automation.Locate({jsonVariable}, new UiLocateOptions {{ Flash = true }});");
+            sb.AppendLine($"if ({locateVariable}.Found)");
+            sb.AppendLine("{");
+            sb.AppendLine($"    automation.PerformMouseAction(UiAction.{actionName}, {locateVariable}.Bounds, {this.LeftLocal}, {this.TopLocal}, {this.DeltaX}, {this.DeltaY});");
+            sb.AppendLine($"    Console.WriteLine({locateVariable}.RawState);");
+            sb.AppendLine("}");
+            sb.AppendLine("else");
+            sb.AppendLine("{");
+            sb.AppendLine($"    Console.WriteLine($\"Failed to find element {{{jsonVariable}}}\");");
+            sb.AppendLine("    return;");
+            sb.AppendLine("}");
+
+            return sb.ToString();
+        }
+
         public UiTreeNode GetUiTreeNode()
         {
             return _rootNode;
