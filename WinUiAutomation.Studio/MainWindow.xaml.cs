@@ -725,8 +725,6 @@ namespace WinUiAutomation.Studio
             if (this.btnVerify.Content.ToString() == "Stop Playing")
             {
                 VerifyNodePath.StopVerifyThread();
-                this.btnVerify.Content = "Play";
-                SetUiInteractionEnabled(true);
             }
             else
             {
