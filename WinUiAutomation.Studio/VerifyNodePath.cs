@@ -15,9 +15,14 @@ namespace WinUiAutomation.Studio
 
         public static void StartVerifyThread()
         {
-            s_playbackCancellation?.Dispose();
+            if (s_threadVerify?.IsAlive == true)
+            {
+                return;
+            }
+
             s_playbackCancellation = new CancellationTokenSource();
-            s_threadVerify = new Thread(PlayRecordedUiTasks);
+            CancellationTokenSource playbackCancellation = s_playbackCancellation;
+            s_threadVerify = new Thread(() => PlayRecordedUiTasks(playbackCancellation));
             s_threadVerify.IsBackground = true;
             s_threadVerify.SetApartmentState(ApartmentState.STA);
             s_threadVerify.Start();
@@ -26,25 +31,6 @@ namespace WinUiAutomation.Studio
         public static void StopVerifyThread()
         {
             s_playbackCancellation?.Cancel();
-            if (s_threadVerify == null)
-            {
-                s_playbackCancellation?.Dispose();
-                s_playbackCancellation = null;
-                MainWindow.FinishedPlaying();
-                return;
-            }
-
-            s_threadVerify.Join(1000);
-            if (s_threadVerify != null && s_threadVerify.IsAlive)
-            {
-                s_threadVerify.Interrupt();
-                s_threadVerify.Join(500);
-            }
-
-            s_threadVerify = null;
-            s_playbackCancellation?.Dispose();
-            s_playbackCancellation = null;
-            MainWindow.FinishedPlaying();
         }
 
         public static void DoVerify(string nodePath)
@@ -85,7 +71,7 @@ namespace WinUiAutomation.Studio
             }
         }
 
-        public static void PlayRecordedUiTasks()
+        private static void PlayRecordedUiTasks(CancellationTokenSource playbackCancellation)
         {
             try
             {
@@ -103,18 +89,17 @@ namespace WinUiAutomation.Studio
 
                 var progress = new Progress<PlaybackProgress>(update => MainWindow.ScrollToTask(recordedTasks[update.Index]));
                 var playback = new AutomationPlayback(UiAutoLib.Automation);
-                playback.Play(tasks, progress: progress, cancellationToken: s_playbackCancellation?.Token ?? CancellationToken.None);
-            }
-            catch (ThreadInterruptedException)
-            {
-                // StopVerifyThread uses Interrupt only as a last-resort cancellation signal.
+                playback.Play(tasks, progress: progress, cancellationToken: playbackCancellation.Token);
             }
             finally
             {
                 MainWindow.FinishedPlaying();
-                s_threadVerify = null;
-                s_playbackCancellation?.Dispose();
-                s_playbackCancellation = null;
+                if (ReferenceEquals(s_playbackCancellation, playbackCancellation))
+                {
+                    s_threadVerify = null;
+                    s_playbackCancellation = null;
+                }
+                playbackCancellation.Dispose();
             }
         }
     }

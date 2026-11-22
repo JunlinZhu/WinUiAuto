@@ -67,6 +67,12 @@ public sealed class AutomationPlayback
 
             if (task.Action == AutomationTaskAction.KeyboardInput)
             {
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Canceled, lastBounds, false, 0));
+                    return new PlaybackResult(results.AsReadOnly(), true);
+                }
+
                 if (!options.DryRun)
                 {
                     automation.SendKeyboardInput(task.KeyboardInput ?? string.Empty, task.CapsLock, task.NumLock, task.ScrollLock);
@@ -77,6 +83,12 @@ public sealed class AutomationPlayback
 
             if (task.Action == AutomationTaskAction.MouseWheel && string.IsNullOrWhiteSpace(task.NodePath))
             {
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Canceled, lastBounds, false, 0));
+                    return new PlaybackResult(results.AsReadOnly(), true);
+                }
+
                 if (!options.DryRun)
                 {
                     automation.PerformMouseAction(UiAction.MouseWheel, lastBounds, task.OffsetX, task.OffsetY, task.DeltaX, task.DeltaY);
@@ -87,6 +99,12 @@ public sealed class AutomationPlayback
 
             LocateOutcome located = Locate(task.NodePath, options, cancellationToken);
             if (located.Canceled)
+            {
+                results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Canceled, lastBounds, located.UsedParentFallback, located.Attempts));
+                return new PlaybackResult(results.AsReadOnly(), true);
+            }
+
+            if (cancellationToken.IsCancellationRequested)
             {
                 results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Canceled, lastBounds, located.UsedParentFallback, located.Attempts));
                 return new PlaybackResult(results.AsReadOnly(), true);
@@ -110,6 +128,12 @@ public sealed class AutomationPlayback
                     return new PlaybackResult(results.AsReadOnly(), true);
                 }
                 continue;
+            }
+
+            if (cancellationToken.IsCancellationRequested)
+            {
+                results.Add(new PlaybackTaskResult(index, task, PlaybackTaskStatus.Canceled, lastBounds, located.UsedParentFallback, located.Attempts));
+                return new PlaybackResult(results.AsReadOnly(), true);
             }
 
             if (!options.DryRun)
@@ -167,6 +191,11 @@ public sealed class AutomationPlayback
             }
 
             UiLocateResult result = automation.Locate(nodePath, new UiLocateOptions { Flash = options.FlashDuringStabilityChecks });
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return false;
+            }
+
             bounds = result.Bounds;
             if (result.Found && bounds == previous)
             {

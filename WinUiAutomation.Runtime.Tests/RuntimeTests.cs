@@ -53,6 +53,26 @@ public sealed class RuntimeTests
     }
 
     [TestMethod]
+    public void PlaybackDoesNotSendInputWhenCanceledDuringLocate()
+    {
+        using var cancellation = new CancellationTokenSource();
+        var driver = new FakeDriver(Found()) { OnLocate = cancellation.Cancel };
+        PlaybackResult result = new AutomationPlayback(driver).Play(
+            new[] { new AutomationTask { Action = AutomationTaskAction.LeftClick, NodePath = "[]" } },
+            new PlaybackOptions
+            {
+                InitialDelay = TimeSpan.Zero,
+                PostActionDelay = TimeSpan.Zero,
+                Stability = new StabilityPolicy { MaxChecks = 1, Delay = TimeSpan.Zero }
+            },
+            cancellationToken: cancellation.Token);
+
+        Assert.IsTrue(result.WasCanceled);
+        Assert.AreEqual(PlaybackTaskStatus.Canceled, result.Tasks[0].Status);
+        Assert.AreEqual(0, driver.MouseActions);
+    }
+
+    [TestMethod]
     public void SkillJsonRejectsUnknownProperties()
     {
         SkillRunResult result = new AutomationSkillRunner(new FakeDriver()).RunJson("{\"format\":\"win-ui-automation-skill\",\"schemaVersion\":2,\"tasks\":[],\"unexpected\":true}");
@@ -95,9 +115,15 @@ public sealed class RuntimeTests
     {
         private readonly Queue<UiLocateResult> locateResults;
         public int MouseActions { get; private set; }
+        public Action? OnLocate { get; set; }
 
         public FakeDriver(params UiLocateResult[] locateResults) => this.locateResults = new(locateResults);
-        public UiLocateResult Locate(string nodePath, UiLocateOptions? options = null) => locateResults.Count > 0 ? locateResults.Dequeue() : Found();
+        public UiLocateResult Locate(string nodePath, UiLocateOptions? options = null)
+        {
+            UiLocateResult result = locateResults.Count > 0 ? locateResults.Dequeue() : Found();
+            OnLocate?.Invoke();
+            return result;
+        }
         public void AbortLocate() { }
         public void Flash(UiRectangle bounds, int red, int green, int blue, int durationMilliseconds, int inflate) { }
         public void PerformMouseAction(UiAction action, UiRectangle bounds, int offsetX, int offsetY, int deltaX, int deltaY) => MouseActions++;
