@@ -28,22 +28,22 @@
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
     <None Include="..\LICENSE" Pack="true" PackagePath="LICENSE" />
-    <None Include="..\UiAutoLib\x64\Release\UiAutoLib.dll"
+    <None Include="..\x64\Release\UiAutoLib.dll"
           Pack="true"
           PackagePath="runtimes\win-x64\native\UiAutoLib.dll"
           Visible="false"
-          Condition="Exists('..\UiAutoLib\x64\Release\UiAutoLib.dll')" />
-    <None Include="..\UiAutoLib\Release\UiAutoLib.dll"
+          Condition="Exists('..\x64\Release\UiAutoLib.dll')" />
+    <None Include="..\Release\UiAutoLib.dll"
           Pack="true"
           PackagePath="runtimes\win-x86\native\UiAutoLib.dll"
           Visible="false"
-          Condition="Exists('..\UiAutoLib\Release\UiAutoLib.dll')" />
+          Condition="Exists('..\Release\UiAutoLib.dll')" />
   </ItemGroup>
 
   <Target Name="ValidateNativePackageAssets" BeforeTargets="Pack">
-    <Error Condition="!Exists('..\UiAutoLib\x64\Release\UiAutoLib.dll')"
+    <Error Condition="!Exists('..\x64\Release\UiAutoLib.dll')"
            Text="Build UiAutoLib Release|x64 before packing UiAutomation.Windows." />
-    <Error Condition="!Exists('..\UiAutoLib\Release\UiAutoLib.dll')"
+    <Error Condition="!Exists('..\Release\UiAutoLib.dll')"
            Text="Build UiAutoLib Release|Win32 before packing UiAutomation.Windows." />
   </Target>
 

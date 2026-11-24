@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>WinUiAutomation.SkillRunner</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UiAutoLib\UiAutoLib.vcxproj" Condition="'$(MSBuildRuntimeType)' == 'Full'">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\WinUiAuto.Windows\UiAutomation.Windows.csproj" />
+    <ProjectReference Include="..\WinUiAutomation.Runtime\WinUiAutomation.Runtime.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Platform)' == 'AnyCPU'">
+    <None Include="..\x64\$(Configuration)\UiAutoLib.dll"
+          Link="UiAutoLib.dll"
+          CopyToOutputDirectory="PreserveNewest"
+          CopyToPublishDirectory="PreserveNewest"
+          Visible="false" />
+  </ItemGroup>
+
+  <Target Name="ValidateNativeRuntimeAsset" BeforeTargets="Build">
+    <Error Condition="!Exists('..\x64\$(Configuration)\UiAutoLib.dll')"
+           Text="UiAutoLib.dll was not found. Build UiAutoLib $(Configuration)|x64 before building WinUiAutomation.SkillRunner." />
+  </Target>
+</Project>

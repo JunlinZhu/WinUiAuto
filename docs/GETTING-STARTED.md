@@ -25,6 +25,8 @@ if (!result.Succeeded)
 
 An interactive, unlocked Windows desktop is required for native UI Automation and input.
 
+For a detailed AI-client workflow using a `.winui-skill.json` file, see [Use a WinUI automation skill in an AI workflow](AI-WORKFLOW-SKILL.md).
+
 ## Run generated C# from Studio
 
 `WinUiAutomation.Studio` **Generate Code** copies a C# method to the clipboard. Paste that method into the `Program` class in [`templates/WinUiAutomation.GeneratedApp`](../templates/WinUiAutomation.GeneratedApp), update `Main` to call its timestamped method name, and run:

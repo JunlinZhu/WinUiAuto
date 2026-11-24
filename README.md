@@ -74,6 +74,12 @@ dotnet run --project .\WinUiAutomation.McpServer\WinUiAutomation.McpServer.cspro
 
 The MCP server provides the execution tools; the AI client supplies the model and workflow. See [`WinUiAutomation.McpServer`](WinUiAutomation.McpServer/README.md) for hosting notes and [`WinUiAutomation.Runtime`](WinUiAutomation.Runtime/README.md) for the skill format and playback options.
 
+For a complete Calculator-based workflow, including snapshot inspection, dry-run validation, approval, execution, result verification, and failure handling, see [`docs/AI-WORKFLOW-SKILL.md`](docs/AI-WORKFLOW-SKILL.md).
+
+The same guide includes a no-Python interactive Ollama host in [`Samples/OllamaMcpHost`](Samples/OllamaMcpHost), plus a copy-pasteable Python reference adapter using [`Samples/OllamaCalculatorWorkflow.py`](Samples/OllamaCalculatorWorkflow.py).
+
+Reusable prompt-driven agent instructions are in [`Samples/OllamaWinUiSkillAgent.prompt.md`](Samples/OllamaWinUiSkillAgent.prompt.md) and [`Samples/AgentSkills`](Samples/AgentSkills).
+
 ## Package
 
 Build the native libraries first, then create the NuGet package:

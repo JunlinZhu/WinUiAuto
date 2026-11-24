@@ -1,0 +1,133 @@
+# WinUI Skill Executor Skill
+
+**Use this skill when**: Running a prepared `.winui-skill.json` through Windows UI Automation MCP.
+
+## Safety Procedure (Always Follow This)
+
+### Phase 1: Inspection
+1. Call `get_snapshot` to capture the current desktop state
+2. Verify the target application is in the expected state
+3. If not, report the mismatch and ask for guidance
+
+### Phase 2: Dry-Run Validation
+1. Run the skill with: `run_skill` and `playbackOptions.dryRun: true`
+2. Wait for all task results
+3. Check EVERY task result:
+   - ✓ Success: task completed without error
+   - ✗ Failure: parsing error, element not found, stability issue, or cancellation
+4. If any task fails, STOP and report:
+   - Task index (which click/action failed)
+   - Action type (leftClick, keyboardInput, etc.)
+   - Target identifier (automationId, name, etc.)
+   - MCP error message
+5. Do NOT proceed to real execution if dry run failed
+
+### Phase 3: Get Approval
+1. Describe the exact real input that will be sent in simple terms
+   - Example: "1. Click Search on taskbar. 2. Type CALCULATOR. 3. Click Open Navigation. 4. Click Scientific. 5. Click: 4, 5, *, 6, 7, =. 6. Close Calculator."
+2. Ask user: "Ready to send real input? Reply RUN to continue or CLOSE to cancel."
+3. Wait for explicit approval
+
+### Phase 4: Real Execution
+1. Only after approval, run the skill with: `playbackOptions.dryRun: false`
+2. Wait for all task results
+3. Report each result as returned by MCP
+
+### Phase 5: Verify Result
+1. Use `query_snapshot` or `get_snapshot` to check the outcome
+2. For Calculator: verify the display shows the expected number
+3. For other tasks: verify the requested action completed
+4. Example for `45*67`: "Display shows 3015. ✓ Correct."
+
+### Phase 6: Cleanup (if needed)
+1. Identify cleanup actions (e.g., close the app)
+2. Explain: "I will now close Calculator."
+3. Ask: "Approve cleanup? Reply CLOSE to continue or CANCEL to leave open."
+4. Wait for explicit approval
+5. Execute cleanup and report results
+
+## Failure Handling
+
+**Stop at the first error.** Do not:
+- Skip failed tasks
+- Retry partially executed skills
+- Assume recovery
+
+Instead:
+1. Report the exact MCP error
+2. Describe the last successful action
+3. Ask what to do (inspect UI, try again, cancel)
+
+## Task Result Interpretation
+
+Each task result includes:
+- Task index
+- Action performed
+- Success/failure status
+- Error details (if failed)
+
+Example success:
+```
+Task 0: leftClick on SearchButton - Success
+Task 1: keyboardInput "CALCULATOR\n" - Success
+Task 2: leftClick on TogglePaneButton - Success
+```
+
+Example failure:
+```
+Task 3: leftClick on num1Button - FAILED
+  Error: Element not located
+  Path: NumberPad > Button[automationId=num1Button]
+  Reason: Could not resolve path in current desktop state
+```
+
+If you see any failure line, the skill did not complete. Stop and report to the user.
+
+## Example: Calculator `45*67`
+
+**Approval message:**
+```
+Dry run successful. Real execution will:
+1. Click Search button
+2. Type "CALCULATOR"
+3. Click Open Navigation button
+4. Click Scientific Calculator
+5. Click: 4, 5, *, 6, 7, =
+6. Display will show 3015
+
+Ready? Type RUN to proceed.
+```
+
+**After execution:**
+```
+All tasks completed successfully.
+Verifying result... Display shows 3015. ✓
+
+The calculation 45 * 67 = 3015 is complete.
+Ready to close? Type CLOSE to exit or any other command to continue.
+```
+
+## MCP Tools
+
+| Tool | Use Case |
+|------|----------|
+| `run_skill` | Execute the full skill with optional dryRun |
+| `get_snapshot` | Capture and inspect current desktop state |
+| `query_snapshot` | Search desktop for element by properties |
+| `locate` | Resolve node path and verify element exists |
+
+## Common Issues
+
+| Issue | Action |
+|-------|--------|
+| "Element not found" in dry run | Verify target app is running; try launching it manually |
+| "Stability issue" | Retry with longer delays; app may need time to respond |
+| Unexpected UI state after real execution | Use `get_snapshot` to inspect; may differ from expected |
+| Cleanup fails | Leave app open rather than failing; report what was not cleaned |
+
+## Notes
+
+- MCP responses are authoritative; report what MCP returns, not assumptions
+- Dry run must pass completely before real execution
+- Always request explicit user approval (RUN, CLOSE, etc.)
+- Approval gates prevent accidental action

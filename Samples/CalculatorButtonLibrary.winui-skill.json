@@ -1,0 +1,3699 @@
+{
+  "format": "win-ui-automation-skill",
+  "schemaVersion": 2,
+  "name": null,
+  "description": null,
+  "tasks": [
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 947,
+          "ly": 1416
+        },
+        {
+          "controlType": "Pane",
+          "position": 3,
+          "className": "Shell_TrayWnd",
+          "name": "Taskbar",
+          "x": 0,
+          "y": 1392,
+          "w": 2560,
+          "h": 48,
+          "lx": 947,
+          "ly": 24
+        },
+        {
+          "controlType": "Pane",
+          "position": 1,
+          "className": "Windows.UI.Composition.DesktopWindowContentBridge",
+          "name": "DesktopWindowXamlSource",
+          "x": 0,
+          "y": 1392,
+          "w": 2560,
+          "h": 48,
+          "lx": 947,
+          "ly": 24
+        },
+        {
+          "controlType": "Pane",
+          "position": 1,
+          "className": "Windows.UI.Input.InputSite.WindowClass",
+          "x": 0,
+          "y": 1392,
+          "w": 2560,
+          "h": 48,
+          "lx": 947,
+          "ly": 24
+        },
+        {
+          "controlType": "Pane",
+          "position": 1,
+          "automationId": "TaskbarFrame",
+          "className": "Taskbar.TaskbarFrameAutomationPeer",
+          "x": 0,
+          "y": 1392,
+          "w": 2560,
+          "h": 48,
+          "lx": 947,
+          "ly": 24
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "automationId": "TaskbarFrameRepeater",
+          "x": 794,
+          "y": 1392,
+          "w": 973,
+          "h": 48,
+          "lx": 153,
+          "ly": 24
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "SearchButton",
+          "className": "ToggleButton",
+          "name": "Search",
+          "x": 841,
+          "y": 1400,
+          "w": 220,
+          "h": 32,
+          "lx": 106,
+          "ly": 16
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 62,
+      "offsetY": 18,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "keyboardInput",
+      "target": null,
+      "keyboardInputBase64": "AEMBQwBBAUEATAFMAEMBQwBVAVUATAFMAEEBQQBUAVQATwFPAFIBUgANAQ0=",
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 2892
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 315,
+          "ly": 180
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 283,
+          "y": 118,
+          "w": 720,
+          "h": 876,
+          "lx": 32,
+          "ly": 62
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 291,
+          "y": 119,
+          "w": 704,
+          "h": 867,
+          "lx": 24,
+          "ly": 61
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 24,
+          "ly": 32
+        },
+        {
+          "controlType": "Button",
+          "position": 1,
+          "automationId": "TogglePaneButton",
+          "className": "Button",
+          "name": "Open Navigation",
+          "x": 295,
+          "y": 157,
+          "w": 40,
+          "h": 36,
+          "lx": 20,
+          "ly": 23
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 22,
+      "offsetY": 23,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1486
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 381,
+          "ly": 297
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 283,
+          "y": 118,
+          "w": 720,
+          "h": 876,
+          "lx": 98,
+          "ly": 179
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 291,
+          "y": 119,
+          "w": 704,
+          "h": 867,
+          "lx": 90,
+          "ly": 178
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 90,
+          "ly": 149
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "automationId": "PaneRoot",
+          "className": "SplitViewPane",
+          "x": 291,
+          "y": 151,
+          "w": 256,
+          "h": 835,
+          "lx": 90,
+          "ly": 146
+        },
+        {
+          "controlType": "Pane",
+          "position": 1,
+          "automationId": "MenuItemsScrollViewer",
+          "className": "ScrollViewer",
+          "x": 291,
+          "y": 195,
+          "w": 256,
+          "h": 733,
+          "lx": 90,
+          "ly": 102
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "automationId": "MenuItemsHost",
+          "x": 295,
+          "y": 206,
+          "w": 248,
+          "h": 722,
+          "lx": 86,
+          "ly": 91
+        },
+        {
+          "controlType": "ListItem",
+          "position": 2,
+          "automationId": "Scientific",
+          "className": "Microsoft.UI.Xaml.Controls.NavigationViewItem",
+          "name": "Scientific Calculator",
+          "x": 295,
+          "y": 277,
+          "w": 248,
+          "h": 36,
+          "lx": 86,
+          "ly": 20
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 82,
+      "offsetY": 19,
+      "deltaX": 0,
+      "deltaY": -1,
+      "delayBeforeMilliseconds": 1722
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 415,
+          "ly": 887
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 283,
+          "y": 118,
+          "w": 720,
+          "h": 876,
+          "lx": 132,
+          "ly": 769
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 291,
+          "y": 119,
+          "w": 704,
+          "h": 867,
+          "lx": 124,
+          "ly": 768
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 124,
+          "ly": 739
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 124,
+          "ly": 739
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad",
+          "x": 374,
+          "y": 726,
+          "w": 236,
+          "h": 256,
+          "lx": 41,
+          "ly": 161
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "num1Button",
+          "className": "Button",
+          "name": "One",
+          "x": 374,
+          "y": 855,
+          "w": 77,
+          "h": 63,
+          "lx": 41,
+          "ly": 32
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 41,
+      "offsetY": 32,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1898
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 637,
+          "ly": 891
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 283,
+          "y": 118,
+          "w": 720,
+          "h": 876,
+          "lx": 354,
+          "ly": 773
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 291,
+          "y": 119,
+          "w": 704,
+          "h": 867,
+          "lx": 346,
+          "ly": 772
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 346,
+          "ly": 743
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 346,
+          "ly": 743
+        },
+        {
+          "controlType": "Group",
+          "position": 5,
+          "automationId": "StandardOperators",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Standard operators",
+          "x": 612,
+          "y": 661,
+          "w": 77,
+          "h": 321,
+          "lx": 25,
+          "ly": 230
+        },
+        {
+          "controlType": "Button",
+          "position": 4,
+          "automationId": "plusButton",
+          "className": "Button",
+          "name": "Plus",
+          "x": 612,
+          "y": 855,
+          "w": 77,
+          "h": 63,
+          "lx": 25,
+          "ly": 36
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 40,
+      "offsetY": 31,
+      "deltaX": 1,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1660
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 500,
+          "ly": 900
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 283,
+          "y": 118,
+          "w": 720,
+          "h": 876,
+          "lx": 217,
+          "ly": 782
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 291,
+          "y": 119,
+          "w": 704,
+          "h": 867,
+          "lx": 209,
+          "ly": 781
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 209,
+          "ly": 752
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 209,
+          "ly": 752
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad",
+          "x": 374,
+          "y": 726,
+          "w": 236,
+          "h": 256,
+          "lx": 126,
+          "ly": 174
+        },
+        {
+          "controlType": "Button",
+          "position": 3,
+          "automationId": "num2Button",
+          "className": "Button",
+          "name": "Two",
+          "x": 453,
+          "y": 855,
+          "w": 78,
+          "h": 63,
+          "lx": 47,
+          "ly": 45
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 40,
+      "offsetY": 41,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1487
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 629,
+          "ly": 955
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 283,
+          "y": 118,
+          "w": 720,
+          "h": 876,
+          "lx": 346,
+          "ly": 837
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 291,
+          "y": 119,
+          "w": 704,
+          "h": 867,
+          "lx": 338,
+          "ly": 836
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 338,
+          "ly": 807
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 338,
+          "ly": 807
+        },
+        {
+          "controlType": "Group",
+          "position": 5,
+          "automationId": "StandardOperators",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Standard operators",
+          "x": 612,
+          "y": 661,
+          "w": 77,
+          "h": 321,
+          "lx": 17,
+          "ly": 294
+        },
+        {
+          "controlType": "Button",
+          "position": 5,
+          "automationId": "equalButton",
+          "className": "Button",
+          "name": "Equals",
+          "x": 612,
+          "y": 920,
+          "w": 77,
+          "h": 62,
+          "lx": 17,
+          "ly": 35
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 44,
+      "offsetY": 33,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1453
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 651,
+          "ly": 302
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 283,
+          "y": 118,
+          "w": 720,
+          "h": 876,
+          "lx": 368,
+          "ly": 184
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 291,
+          "y": 119,
+          "w": 704,
+          "h": 867,
+          "lx": 360,
+          "ly": 183
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 360,
+          "ly": 154
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 291,
+          "y": 148,
+          "w": 704,
+          "h": 838,
+          "lx": 360,
+          "ly": 154
+        },
+        {
+          "controlType": "Text",
+          "position": 2,
+          "automationId": "CalculatorResults",
+          "name": "Display is 3",
+          "x": 291,
+          "y": 239,
+          "w": 402,
+          "h": 131,
+          "lx": 360,
+          "ly": 63
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 364,
+      "offsetY": 61,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1457
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 900,
+          "ly": 972
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 354,
+          "ly": 765
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 346,
+          "ly": 764
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 346,
+          "ly": 735
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 346,
+          "ly": 735
+        },
+        {
+          "controlType": "Group",
+          "position": 5,
+          "automationId": "StandardOperators",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Standard operators",
+          "x": 875,
+          "y": 750,
+          "w": 77,
+          "h": 321,
+          "lx": 25,
+          "ly": 222
+        },
+        {
+          "controlType": "Button",
+          "position": 4,
+          "automationId": "plusButton",
+          "className": "Button",
+          "name": "Plus",
+          "x": 875,
+          "y": 944,
+          "w": 77,
+          "h": 63,
+          "lx": 25,
+          "ly": 28
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 25,
+      "offsetY": 28,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3068
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 924,
+          "ly": 909
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 378,
+          "ly": 702
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 370,
+          "ly": 701
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 370,
+          "ly": 672
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 370,
+          "ly": 672
+        },
+        {
+          "controlType": "Group",
+          "position": 5,
+          "automationId": "StandardOperators",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Standard operators",
+          "x": 875,
+          "y": 750,
+          "w": 77,
+          "h": 321,
+          "lx": 49,
+          "ly": 159
+        },
+        {
+          "controlType": "Button",
+          "position": 3,
+          "automationId": "minusButton",
+          "className": "Button",
+          "name": "Minus",
+          "x": 875,
+          "y": 880,
+          "w": 77,
+          "h": 62,
+          "lx": 49,
+          "ly": 29
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 49,
+      "offsetY": 29,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3124
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 917,
+          "ly": 841
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 371,
+          "ly": 634
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 363,
+          "ly": 633
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 363,
+          "ly": 604
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 363,
+          "ly": 604
+        },
+        {
+          "controlType": "Group",
+          "position": 5,
+          "automationId": "StandardOperators",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Standard operators",
+          "x": 875,
+          "y": 750,
+          "w": 77,
+          "h": 321,
+          "lx": 42,
+          "ly": 91
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "multiplyButton",
+          "className": "Button",
+          "name": "Multiply by",
+          "x": 875,
+          "y": 815,
+          "w": 77,
+          "h": 63,
+          "lx": 42,
+          "ly": 26
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 42,
+      "offsetY": 26,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3990
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 901,
+          "ly": 775
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 355,
+          "ly": 568
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 347,
+          "ly": 567
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 347,
+          "ly": 538
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 347,
+          "ly": 538
+        },
+        {
+          "controlType": "Group",
+          "position": 5,
+          "automationId": "StandardOperators",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Standard operators",
+          "x": 875,
+          "y": 750,
+          "w": 77,
+          "h": 321,
+          "lx": 26,
+          "ly": 25
+        },
+        {
+          "controlType": "Button",
+          "position": 1,
+          "automationId": "divideButton",
+          "className": "Button",
+          "name": "Divide by",
+          "x": 875,
+          "y": 750,
+          "w": 77,
+          "h": 63,
+          "lx": 26,
+          "ly": 25
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 26,
+      "offsetY": 25,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4141
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 838,
+          "ly": 773
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 292,
+          "ly": 566
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 284,
+          "ly": 565
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 284,
+          "ly": 536
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 284,
+          "ly": 536
+        },
+        {
+          "controlType": "Button",
+          "position": 10,
+          "automationId": "factorialButton",
+          "className": "Button",
+          "name": "Factorial",
+          "x": 795,
+          "y": 750,
+          "w": 78,
+          "h": 63,
+          "lx": 43,
+          "ly": 23
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 43,
+      "offsetY": 23,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4616
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 747,
+          "ly": 787
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 201,
+          "ly": 580
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 193,
+          "ly": 579
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 193,
+          "ly": 550
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 193,
+          "ly": 550
+        },
+        {
+          "controlType": "Button",
+          "position": 9,
+          "automationId": "closeParenthesisButton",
+          "className": "Button",
+          "name": "Right parenthesis",
+          "x": 716,
+          "y": 750,
+          "w": 77,
+          "h": 63,
+          "lx": 31,
+          "ly": 37
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 53,
+      "offsetY": 30,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4458
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 661,
+          "ly": 791
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 115,
+          "ly": 584
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 107,
+          "ly": 583
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 107,
+          "ly": 554
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 107,
+          "ly": 554
+        },
+        {
+          "controlType": "Button",
+          "position": 8,
+          "automationId": "openParenthesisButton",
+          "className": "Button",
+          "name": "Left parenthesis",
+          "x": 637,
+          "y": 750,
+          "w": 77,
+          "h": 63,
+          "lx": 24,
+          "ly": 41
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 24,
+      "offsetY": 41,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3260
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 600,
+          "ly": 776
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 54,
+          "ly": 569
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 46,
+          "ly": 568
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 46,
+          "ly": 539
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 46,
+          "ly": 539
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 558,
+          "y": 685,
+          "w": 77,
+          "h": 386,
+          "lx": 42,
+          "ly": 91
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "squareRootButton",
+          "className": "Button",
+          "name": "Square root",
+          "x": 558,
+          "y": 750,
+          "w": 77,
+          "h": 63,
+          "lx": 42,
+          "ly": 26
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 42,
+      "offsetY": 26,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3079
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 586,
+          "ly": 850
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 40,
+          "ly": 643
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 32,
+          "ly": 642
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 32,
+          "ly": 613
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 32,
+          "ly": 613
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 558,
+          "y": 685,
+          "w": 77,
+          "h": 386,
+          "lx": 28,
+          "ly": 165
+        },
+        {
+          "controlType": "Button",
+          "position": 3,
+          "automationId": "powerButton",
+          "className": "Button",
+          "name": "\u0027X\u0027 to the exponent",
+          "x": 558,
+          "y": 815,
+          "w": 77,
+          "h": 63,
+          "lx": 28,
+          "ly": 35
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 28,
+      "offsetY": 35,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 7622
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 603,
+          "ly": 899
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 57,
+          "ly": 692
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 49,
+          "ly": 691
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 49,
+          "ly": 662
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 49,
+          "ly": 662
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 558,
+          "y": 685,
+          "w": 77,
+          "h": 386,
+          "lx": 45,
+          "ly": 214
+        },
+        {
+          "controlType": "Button",
+          "position": 4,
+          "automationId": "powerOf10Button",
+          "className": "Button",
+          "name": "Ten to the exponent",
+          "x": 558,
+          "y": 880,
+          "w": 77,
+          "h": 62,
+          "lx": 45,
+          "ly": 19
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 45,
+      "offsetY": 19,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4004
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 591,
+          "ly": 983
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 45,
+          "ly": 776
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 37,
+          "ly": 775
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 37,
+          "ly": 746
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 37,
+          "ly": 746
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 558,
+          "y": 685,
+          "w": 77,
+          "h": 386,
+          "lx": 33,
+          "ly": 298
+        },
+        {
+          "controlType": "Button",
+          "position": 5,
+          "automationId": "logBase10Button",
+          "className": "Button",
+          "name": "Log",
+          "x": 558,
+          "y": 944,
+          "w": 77,
+          "h": 63,
+          "lx": 33,
+          "ly": 39
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 33,
+      "offsetY": 39,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3255
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 583,
+          "ly": 1038
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 37,
+          "ly": 831
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 29,
+          "ly": 830
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 29,
+          "ly": 801
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 29,
+          "ly": 801
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 558,
+          "y": 685,
+          "w": 77,
+          "h": 386,
+          "lx": 25,
+          "ly": 353
+        },
+        {
+          "controlType": "Button",
+          "position": 6,
+          "automationId": "logBaseEButton",
+          "className": "Button",
+          "name": "Natural log",
+          "x": 558,
+          "y": 1009,
+          "w": 77,
+          "h": 62,
+          "lx": 25,
+          "ly": 29
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 25,
+      "offsetY": 29,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 5232
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 592,
+          "ly": 725
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 46,
+          "ly": 518
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 38,
+          "ly": 517
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 38,
+          "ly": 488
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 38,
+          "ly": 488
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 558,
+          "y": 685,
+          "w": 77,
+          "h": 386,
+          "lx": 34,
+          "ly": 40
+        },
+        {
+          "controlType": "Button",
+          "position": 1,
+          "automationId": "xpower2Button",
+          "className": "Button",
+          "name": "Square",
+          "x": 558,
+          "y": 685,
+          "w": 77,
+          "h": 63,
+          "lx": 34,
+          "ly": 40
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 34,
+      "offsetY": 40,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4085
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 694,
+          "ly": 707
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 148,
+          "ly": 500
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 140,
+          "ly": 499
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 140,
+          "ly": 470
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 140,
+          "ly": 470
+        },
+        {
+          "controlType": "Button",
+          "position": 4,
+          "automationId": "invertButton",
+          "className": "Button",
+          "name": "Reciprocal",
+          "x": 637,
+          "y": 685,
+          "w": 77,
+          "h": 63,
+          "lx": 57,
+          "ly": 22
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 44,
+      "offsetY": 34,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3977
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 747,
+          "ly": 727
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 201,
+          "ly": 520
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 193,
+          "ly": 519
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 193,
+          "ly": 490
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 193,
+          "ly": 490
+        },
+        {
+          "controlType": "Button",
+          "position": 5,
+          "automationId": "absButton",
+          "className": "Button",
+          "name": "Absolute value",
+          "x": 716,
+          "y": 685,
+          "w": 77,
+          "h": 63,
+          "lx": 31,
+          "ly": 42
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 31,
+      "offsetY": 42,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4168
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 837,
+          "ly": 707
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 291,
+          "ly": 500
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 283,
+          "ly": 499
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 283,
+          "ly": 470
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 283,
+          "ly": 470
+        },
+        {
+          "controlType": "Button",
+          "position": 6,
+          "automationId": "expButton",
+          "className": "Button",
+          "name": "Exponential",
+          "x": 795,
+          "y": 685,
+          "w": 78,
+          "h": 63,
+          "lx": 42,
+          "ly": 22
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 42,
+      "offsetY": 22,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3682
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 911,
+          "ly": 720
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 365,
+          "ly": 513
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 357,
+          "ly": 512
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 357,
+          "ly": 483
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 357,
+          "ly": 483
+        },
+        {
+          "controlType": "Button",
+          "position": 7,
+          "automationId": "modButton",
+          "className": "Button",
+          "name": "Modulo",
+          "x": 875,
+          "y": 685,
+          "w": 77,
+          "h": 63,
+          "lx": 36,
+          "ly": 35
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 36,
+      "offsetY": 35,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3145
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 600,
+          "ly": 660
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 54,
+          "ly": 453
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 46,
+          "ly": 452
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 46,
+          "ly": 423
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 46,
+          "ly": 423
+        },
+        {
+          "controlType": "Button",
+          "position": 1,
+          "automationId": "shiftButton",
+          "className": "ToggleButton",
+          "name": "Inverse function",
+          "x": 558,
+          "y": 620,
+          "w": 77,
+          "h": 63,
+          "lx": 42,
+          "ly": 40
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 42,
+      "offsetY": 40,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 5263
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 684,
+          "ly": 644
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 138,
+          "ly": 437
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 130,
+          "ly": 436
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 130,
+          "ly": 407
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 130,
+          "ly": 407
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "piButton",
+          "className": "Button",
+          "name": "Pi",
+          "x": 637,
+          "y": 620,
+          "w": 77,
+          "h": 63,
+          "lx": 47,
+          "ly": 24
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 47,
+      "offsetY": 24,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4730
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 755,
+          "ly": 650
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 209,
+          "ly": 443
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 201,
+          "ly": 442
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 201,
+          "ly": 413
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 201,
+          "ly": 413
+        },
+        {
+          "controlType": "Button",
+          "position": 3,
+          "automationId": "eulerButton",
+          "className": "Button",
+          "name": "Euler\u0027s number",
+          "x": 716,
+          "y": 620,
+          "w": 77,
+          "h": 63,
+          "lx": 39,
+          "ly": 30
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 39,
+      "offsetY": 30,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 6081
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 840,
+          "ly": 647
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 294,
+          "ly": 440
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 286,
+          "ly": 439
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 286,
+          "ly": 410
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 286,
+          "ly": 410
+        },
+        {
+          "controlType": "Group",
+          "position": 3,
+          "automationId": "DisplayControls",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Display controls",
+          "x": 795,
+          "y": 620,
+          "w": 157,
+          "h": 63,
+          "lx": 45,
+          "ly": 27
+        },
+        {
+          "controlType": "Button",
+          "position": 1,
+          "automationId": "clearButton",
+          "className": "Button",
+          "name": "Clear",
+          "x": 795,
+          "y": 620,
+          "w": 78,
+          "h": 63,
+          "lx": 45,
+          "ly": 27
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 45,
+      "offsetY": 27,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3296
+    },
+    {
+      "action": "mouseHover",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 912,
+          "ly": 675
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 546,
+          "y": 207,
+          "w": 720,
+          "h": 876,
+          "lx": 366,
+          "ly": 468
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 554,
+          "y": 208,
+          "w": 704,
+          "h": 867,
+          "lx": 358,
+          "ly": 467
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 358,
+          "ly": 438
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 554,
+          "y": 237,
+          "w": 704,
+          "h": 838,
+          "lx": 358,
+          "ly": 438
+        },
+        {
+          "controlType": "Group",
+          "position": 3,
+          "automationId": "DisplayControls",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Display controls",
+          "x": 795,
+          "y": 620,
+          "w": 157,
+          "h": 63,
+          "lx": 117,
+          "ly": 55
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "backSpaceButton",
+          "className": "Button",
+          "name": "Backspace",
+          "x": 875,
+          "y": 620,
+          "w": 77,
+          "h": 63,
+          "lx": 37,
+          "ly": 55
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 37,
+      "offsetY": 55,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 4001
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 891,
+          "ly": 827
+        },
+        {
+          "controlType": "Window",
+          "position": 3,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 752,
+          "y": 54,
+          "w": 720,
+          "h": 876,
+          "lx": 139,
+          "ly": 773
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 760,
+          "y": 55,
+          "w": 704,
+          "h": 867,
+          "lx": 131,
+          "ly": 772
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 131,
+          "ly": 743
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 131,
+          "ly": 743
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad",
+          "x": 843,
+          "y": 662,
+          "w": 236,
+          "h": 256,
+          "lx": 48,
+          "ly": 165
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "num1Button",
+          "className": "Button",
+          "name": "One",
+          "x": 843,
+          "y": 791,
+          "w": 77,
+          "h": 63,
+          "lx": 48,
+          "ly": 36
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 39,
+      "offsetY": 34,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1384
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 917,
+          "ly": 825
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 752,
+          "y": 54,
+          "w": 720,
+          "h": 876,
+          "lx": 165,
+          "ly": 771
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 760,
+          "y": 55,
+          "w": 704,
+          "h": 867,
+          "lx": 157,
+          "ly": 770
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 157,
+          "ly": 741
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 157,
+          "ly": 741
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad",
+          "x": 843,
+          "y": 662,
+          "w": 236,
+          "h": 256,
+          "lx": 74,
+          "ly": 163
+        },
+        {
+          "controlType": "Button",
+          "position": 2,
+          "automationId": "num1Button",
+          "className": "Button",
+          "name": "One",
+          "x": 843,
+          "y": 791,
+          "w": 77,
+          "h": 63,
+          "lx": 74,
+          "ly": 34
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 116,
+      "offsetY": 33,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 754
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 799,
+          "ly": 878
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 752,
+          "y": 54,
+          "w": 720,
+          "h": 876,
+          "lx": 47,
+          "ly": 824
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 760,
+          "y": 55,
+          "w": 704,
+          "h": 867,
+          "lx": 39,
+          "ly": 823
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 39,
+          "ly": 794
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 39,
+          "ly": 794
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 764,
+          "y": 532,
+          "w": 77,
+          "h": 386,
+          "lx": 35,
+          "ly": 346
+        },
+        {
+          "controlType": "Button",
+          "position": 6,
+          "automationId": "logBaseEButton",
+          "className": "Button",
+          "name": "Natural log",
+          "x": 764,
+          "y": 856,
+          "w": 77,
+          "h": 62,
+          "lx": 35,
+          "ly": 22
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 41,
+      "offsetY": 28,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 1856
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 815,
+          "ly": 835
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 752,
+          "y": 54,
+          "w": 720,
+          "h": 876,
+          "lx": 63,
+          "ly": 781
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator",
+          "x": 760,
+          "y": 55,
+          "w": 704,
+          "h": 867,
+          "lx": 55,
+          "ly": 780
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 55,
+          "ly": 751
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget",
+          "x": 760,
+          "y": 84,
+          "w": 704,
+          "h": 838,
+          "lx": 55,
+          "ly": 751
+        },
+        {
+          "controlType": "Group",
+          "position": 4,
+          "className": "NamedContainerAutomationPeer",
+          "name": "Scientific functions",
+          "x": 764,
+          "y": 532,
+          "w": 77,
+          "h": 386,
+          "lx": 51,
+          "ly": 303
+        },
+        {
+          "controlType": "Button",
+          "position": 5,
+          "automationId": "logBase10Button",
+          "className": "Button",
+          "name": "Log",
+          "x": 764,
+          "y": 791,
+          "w": 77,
+          "h": 63,
+          "lx": 51,
+          "ly": 44
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 47,
+      "offsetY": 30,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 3595
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 1,
+          "automationId": "num0Button",
+          "className": "Button",
+          "name": "Zero"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 39,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 4,
+          "automationId": "num3Button",
+          "className": "Button",
+          "name": "Three"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 38,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 5,
+          "automationId": "num4Button",
+          "className": "Button",
+          "name": "Four"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 38,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 6,
+          "automationId": "num5Button",
+          "className": "Button",
+          "name": "Five"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 39,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 7,
+          "automationId": "num6Button",
+          "className": "Button",
+          "name": "Six"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 38,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 8,
+          "automationId": "num7Button",
+          "className": "Button",
+          "name": "Seven"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 38,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 9,
+          "automationId": "num8Button",
+          "className": "Button",
+          "name": "Eight"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 39,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1"
+        },
+        {
+          "controlType": "Window",
+          "position": 5,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "Windows.UI.Core.CoreWindow",
+          "name": "Calculator"
+        },
+        {
+          "controlType": "Custom",
+          "position": 1,
+          "automationId": "NavView"
+        },
+        {
+          "controlType": "Group",
+          "position": 1,
+          "className": "LandmarkTarget"
+        },
+        {
+          "controlType": "Group",
+          "position": 6,
+          "automationId": "NumberPad",
+          "className": "NamedContainerAutomationPeer",
+          "name": "Number pad"
+        },
+        {
+          "controlType": "Button",
+          "position": 10,
+          "automationId": "num9Button",
+          "className": "Button",
+          "name": "Nine"
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 38,
+      "offsetY": 31,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 0
+    },
+    {
+      "action": "leftClick",
+      "target": [
+        {
+          "controlType": "Pane",
+          "position": 0,
+          "className": "#32769",
+          "name": "Desktop 1",
+          "x": 0,
+          "y": 0,
+          "w": 2560,
+          "h": 1440,
+          "lx": 1444,
+          "ly": 80
+        },
+        {
+          "controlType": "Window",
+          "position": 2,
+          "className": "ApplicationFrameWindow",
+          "name": "Calculator",
+          "x": 752,
+          "y": 54,
+          "w": 720,
+          "h": 876,
+          "lx": 692,
+          "ly": 26
+        },
+        {
+          "controlType": "Window",
+          "position": 1,
+          "automationId": "TitleBar",
+          "className": "ApplicationFrameTitleBarWindow",
+          "name": "Calculator",
+          "x": 1276,
+          "y": 55,
+          "w": 188,
+          "h": 32,
+          "lx": 168,
+          "ly": 25
+        },
+        {
+          "controlType": "Button",
+          "position": 3,
+          "automationId": "Close",
+          "name": "Close Calculator",
+          "x": 1418,
+          "y": 55,
+          "w": 46,
+          "h": 32,
+          "lx": 26,
+          "ly": 25
+        }
+      ],
+      "keyboardInputBase64": null,
+      "capsLock": false,
+      "numLock": false,
+      "scrollLock": false,
+      "offsetX": 22,
+      "offsetY": 16,
+      "deltaX": 0,
+      "deltaY": 0,
+      "delayBeforeMilliseconds": 5552
+    }
+  ],
+  "completionAssertions": []
+}

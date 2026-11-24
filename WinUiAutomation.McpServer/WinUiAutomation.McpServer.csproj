@@ -8,13 +8,22 @@
     <AssemblyName>WinUiAutomation.McpServer</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UiAutoLib\UiAutoLib.vcxproj" Condition="'$(MSBuildRuntimeType)' == 'Full'">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="..\WinUiAuto.Windows\UiAutomation.Windows.csproj" />
     <ProjectReference Include="..\WinUiAutomation.Runtime\WinUiAutomation.Runtime.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(Platform)' == 'x64' Or '$(Platform)' == 'AnyCPU'">
-    <None Include="..\UiAutoLib\x64\$(Configuration)\UiAutoLib.dll" Link="UiAutoLib.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Condition="Exists('..\UiAutoLib\x64\$(Configuration)\UiAutoLib.dll')" />
+    <None Include="..\x64\$(Configuration)\UiAutoLib.dll" Link="UiAutoLib.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
   <ItemGroup Condition="'$(Platform)' == 'x86'">
-    <None Include="..\UiAutoLib\$(Configuration)\UiAutoLib.dll" Link="UiAutoLib.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Condition="Exists('..\UiAutoLib\$(Configuration)\UiAutoLib.dll')" />
+    <None Include="..\$(Configuration)\UiAutoLib.dll" Link="UiAutoLib.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
+  <Target Name="ValidateNativeRuntimeAsset" BeforeTargets="Build">
+    <Error Condition="('$(Platform)' == 'x64' Or '$(Platform)' == 'AnyCPU') And !Exists('..\x64\$(Configuration)\UiAutoLib.dll')"
+           Text="UiAutoLib.dll was not found. Build UiAutoLib $(Configuration)|x64 before building WinUiAutomation.McpServer." />
+    <Error Condition="'$(Platform)' == 'x86' And !Exists('..\$(Configuration)\UiAutoLib.dll')"
+           Text="UiAutoLib.dll was not found. Build UiAutoLib $(Configuration)|Win32 before building WinUiAutomation.McpServer." />
+  </Target>
 </Project>

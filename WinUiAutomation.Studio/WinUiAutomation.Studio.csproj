@@ -17,7 +17,9 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\UiAutoLib\UiAutoLib.vcxproj" />
+    <ProjectReference Include="..\UiAutoLib\UiAutoLib.vcxproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="..\WinUiAuto.Windows\UiAutomation.Windows.csproj" />
     <ProjectReference Include="..\WinUiAutomation.Runtime\WinUiAutomation.Runtime.csproj" />
   </ItemGroup>

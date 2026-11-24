@@ -1,0 +1,180 @@
+# WinUI Skill Editor Skill
+
+**Use this skill when**: Adapting an existing `.winui-skill.json` to new input or a related workflow.
+
+## Inputs
+
+| Input | Purpose |
+|-------|---------|
+| `skillPath` | Path to source `.winui-skill.json` file |
+| `request` | Requested UI action or data change |
+| `outputPath` | (Optional) Path to save derived skill |
+
+## Procedure
+
+### Step 1: Load and Parse
+1. Load `skillPath` as JSON
+2. Verify it is a valid `.winui-skill.json` (has `format`, `schemaVersion`, `tasks`)
+3. Understand the current task structure
+
+### Step 2: Preserve by Deep Copy
+1. Create a complete copy of the source object in memory
+2. Never modify the original file
+3. All edits are in-memory only
+
+### Step 3: Identify Variable Input Range
+1. Find the section of tasks that represent user input
+   - **For Calculator**: arithmetic tasks (digit + operator + digit clicks)
+   - **For other apps**: the specific tasks that change based on user request
+2. Mark start and end indices
+
+### Step 4: Update Only That Range
+1. Keep all other tasks unchanged:
+   - Launch tasks (opening the app)
+   - Navigation tasks (switching modes, tabs)
+   - Result verification tasks
+   - Cleanup tasks (closing the app)
+2. Update ONLY the identified variable range
+
+### Step 5: Use Recorded Node Paths as Templates
+1. For new buttons or fields:
+   - Change only the leaf properties: `automationId` and `name`
+   - Preserve the entire parent path: `controlType`, `className`, `position`
+2. For operators: use the correct parent (`StandardOperators`, not `NumberPad`)
+3. Example: changing from `plusButton` to `multiplyButton`:
+   ```json
+   {
+	 "action": "leftClick",
+	 "target": [
+	   { "controlType": "Pane", "automationId": "StandardOperators" },
+	   { "controlType": "Button", "automationId": "multiplyButton", "name": "Multiply" }
+	 ]
+   }
+   ```
+   Only the `automationId` and `name` changed; parent path is identical.
+
+### Step 6: Update Result Names
+1. Remove stale result names that contain fixed values
+   - **Remove**: "Display is 3" (fixed to old answer)
+   - **Retain**: "CalculatorResults" (generic result ID)
+2. Remove old assertion names that hardcode expected values
+   - **Example**: "Result equals 3" → remove if answer changed
+
+### Step 7: Validate JSON
+1. Verify the output is valid JSON
+2. Check that all required properties are present
+3. Ensure node path consistency
+
+### Step 8: Output
+1. Write `outputPath` ONLY if specified
+2. Never overwrite `skillPath` by default
+3. Return:
+   - The derived skill JSON object
+   - A concise task-diff summary (what changed)
+   - The output path if written
+   - Any unresolved target assumptions
+
+## Example: Calculator Adaptation
+
+### Input
+- `skillPath`: `Calculator.winui-skill.json` (calculates 1+2)
+- `request`: "Adapt for 45*67"
+- `outputPath`: `Calculator-45x67.winui-skill.json`
+
+### Analysis
+1. Load Calculator.winui-skill.json
+2. Find arithmetic tasks: tasks[4] through tasks[6] (num1, plus, num2, equals)
+3. Identify these as variable input range
+
+### Transformation
+1. Keep tasks[0-3]: launch, search, keyboard input, navigation
+2. Update tasks[4-7]:
+   - Task 4: num4Button (changed from num1Button)
+   - Task 5: num5Button (new operator range digit)
+   - Task 6: multiplyButton (changed from plusButton)
+   - Task 7: num6Button (new operator range digit)
+   - Task 8: num7Button (new operator range digit)
+   - Task 9: equalButton (unchanged, still needed)
+3. Keep task[10+]: result verification, cleanup
+4. Update result name from "Display is 3" to "CalculatorResults"
+
+### Output
+```json
+{
+  "format": "win-ui-automation-skill",
+  "schemaVersion": 2,
+  "name": "Calculate 45*67",
+  "description": "Derived skill for 45*67",
+  "tasks": [
+	... (all tasks with arithmetic section updated)
+  ]
+}
+```
+
+**Task diff summary**:
+```
+- Replaced arithmetic: 1+2 → 4,5,*,6,7
+- Updated operator parent to StandardOperators
+- Cleaned up result display name
+- Preserved launch, navigation, and cleanup
+```
+
+## Validation Checklist
+
+- [ ] Source skill loaded successfully
+- [ ] No changes made to original file
+- [ ] Variable input range correctly identified
+- [ ] Parent paths preserved for all changed tasks
+- [ ] Only leaf properties (automationId, name) updated for new buttons
+- [ ] Stale result names removed
+- [ ] All required task properties present
+- [ ] Output JSON is valid
+- [ ] Output path not same as input (unless explicitly requested)
+
+## Safety Rules
+
+1. **Never invent paths**: Use only properties from recorded source tasks
+2. **Preserve structure**: Keep launch, navigation, result, cleanup intact
+3. **Deep copy first**: Never edit the loaded source JSON directly
+4. **Report assumptions**: If a target cannot be inferred from source, ask user
+5. **Validate before returning**: Ensure output JSON is correct
+
+## Common Patterns
+
+### Pattern: Calculator Expression Change
+- Identify: Tasks with digit/operator clicks
+- Update: Change automationIds to new digits/operators
+- Preserve: Parent paths, sequences, result tasks
+
+### Pattern: Text Input Change
+- Identify: KeyboardInput task with base64 encoded text
+- Update: Encode new text to base64 and replace
+- Preserve: All click tasks before/after input
+
+### Pattern: Mode or Navigation Change
+- Identify: Specific navigation/mode tasks
+- Update: Change target button automationId if switching modes
+- Preserve: Initial launch, results, cleanup
+
+## Example Usage
+
+```
+Request: "Adapt Samples\Calculator.winui-skill.json to compute sqrt(16)"
+
+Process:
+1. Load skill
+2. Find: Search, launch, navigate to Scientific mode, arithmetic tasks, result, close
+3. Variable range: arithmetic tasks (1+2 clicks)
+4. New sequence: 1, 6, sqrt button, =
+5. Build task objects using recorded node paths
+6. Output: Derived skill with new tasks, clean result name
+```
+
+## MCP Integration
+
+This is a planning and derivation skill. After creating the derived JSON:
+1. Use `load_source_skill` to load the original skill for reference
+2. Use `run_skill` with `dryRun: true` to validate the derived skill
+3. Only after validation is dry-run approval appropriate
+
+This skill prepares the JSON; execution is handled by WinUiSkillExecutor.skill.md.

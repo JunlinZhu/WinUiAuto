@@ -1,0 +1,121 @@
+# Calculator Expression Skill
+
+**Use this skill when**: Adapting a saved Calculator skill for a new arithmetic or scientific expression.
+
+**Key rule**: Build tasks from recorded button IDs; do not invent paths.
+
+## Supported Expressions
+
+### Basic Arithmetic
+- Operators: `+`, `-`, `*`, `/`
+- Numbers: 0-9, decimal point (`.`)
+- Groups: parentheses `()` for grouping
+- Example: `45*67`, `3.14+2.86`, `(10+5)*2`
+
+### Scientific Functions
+| Expression | Button ID | Example Task Sequence |
+|---|---|---|
+| `sqrt(x)` | `squareRootButton` | num9Button → squareRootButton → equalButton |
+| `ln(x)` | `logBaseEButton` | num2Button → logBaseEButton → equalButton |
+| `log(x)` | `logBase10Button` | num1Button → num0Button → num0Button → logBase10Button → equalButton |
+| `x**y` | `powerButton` | num2Button → powerButton → num5Button → equalButton |
+| `10**x` | `powerOf10Button` | num3Button → powerOf10Button → equalButton |
+| `square(x)` or `x square` | `xpower2Button` | num4Button → xpower2Button → equalButton |
+| `1/x` | `invertButton` | num4Button → invertButton → equalButton |
+| `abs(x)` | `absButton` | num5Button → absButton → equalButton |
+| `exp(m,n)` for scientific notation | `expButton` | num2Button → expButton → num3Button → equalButton |
+| `x mod y` | `modButton` | num1Button → num7Button → modButton → num5Button → equalButton |
+
+## Transformation Process
+
+Starting from `CalculatorButtonLibrary.winui-skill.json`:
+
+1. **Preserve structural tasks**
+   - Keep: Search/Calculator launch tasks
+   - Keep: Navigation to Scientific mode
+   - Keep: Result verification task
+   - Keep: Cleanup/close tasks
+
+2. **Replace arithmetic tasks only**
+   - Remove: Old digit/operator clicks (e.g., 1+2)
+   - Add: One click task per digit or operator in your expression
+   - Sequence must follow Calculator entry order
+
+3. **Use recorded button paths**
+   - Each button ID (e.g., `num5Button`, `multiplyButton`) has a recorded node path in the library
+   - Use that complete node path; never create new ones
+   - Number buttons use `NumberPad` parent; operators use `StandardOperators` parent
+
+4. **End with Equals**
+   - Add: One final `leftClick` task targeting `equalButton`
+   - This confirms the result to Calculator
+
+5. **Task structure for one click**
+   ```json
+   {
+	 "action": "leftClick",
+	 "target": [
+	   { "controlType": "Pane", "automationId": "NumberPad" },
+	   { "controlType": "Button", "automationId": "num5Button", "name": "Five" }
+	 ]
+   }
+   ```
+   Copy the full `target` array from the library for the button you need.
+
+## Example Transformations
+
+### `12*34` from `1+2`
+
+Old sequence (from library):
+```
+num1Button → plusButton → num2Button → equalButton
+```
+
+New sequence:
+```
+num1Button → num2Button → multiplyButton → num3Button → num4Button → equalButton
+```
+
+Each task reuses the recorded node path for that button.
+
+### `sqrt(144)` from library
+
+Sequence:
+```
+num1Button → num4Button → num4Button → squareRootButton → equalButton
+```
+
+The `squareRootButton` path is recorded in the Scientific section of the library.
+
+## Validation Checklist
+
+- [ ] All digits and operators appear in order as entered
+- [ ] Each button ID exists in the recorded library (not invented)
+- [ ] Parent paths (NumberPad, StandardOperators, Scientific) match the library
+- [ ] Expression ends with `equalButton`
+- [ ] Node paths are deep-copied from the library, not modified
+- [ ] Launch and cleanup tasks are preserved from source
+
+## Error Cases
+
+**Unsupported syntax**: Reject it.
+- Example: `sqrt(x)` without a number → "Please provide a concrete number, e.g. sqrt(16)"
+- Example: `exp(x) = e**x` → Ask: "Did you mean scientific notation exp(2,3) or the exponential function e**x?"
+
+**Missing button target**: Report exactly what is missing.
+- Example: If `piButton` is not in the library → "π (pi) is not available in the recorded button library"
+- Do not invent a path; ask the user to record it or use an alternative
+
+**Invalid domains**: Reject with explanation.
+- Example: `ln(-5)` → "ln requires x > 0"
+- Example: `sqrt(-4)` → "square root requires x ≥ 0"
+- Example: `1/0` → "Division by zero"
+
+## Host Support
+
+The host loads this file through `load_skill_instructions` when you request a Calculator-related task. You then use the guidance here to compose an updated skill JSON. Loading this file is NOT execution; it is context for your task derivation.
+
+After composing the skill, use:
+- `run_skill` with the complete skill JSON and `playbackOptions.dryRun: true` to validate
+- `load_source_skill` if you need the full recorded library for reference
+- Expect host approval before `dryRun: false`
