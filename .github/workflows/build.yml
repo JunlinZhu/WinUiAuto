@@ -42,7 +42,7 @@ jobs:
         run: dotnet vstest WinUiAutomation.GeneratedApp.Tests\bin\x64\Release\net8.0-windows\WinUiAutomation.GeneratedApp.Tests.dll --logger:"console;verbosity=normal"
       - name: Pack
         run: dotnet pack WinUiAuto.Windows\UiAutomation.Windows.csproj -c Release -o artifacts\packages
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: NuGet-packages
           path: artifacts\packages\*.*nupkg
